@@ -1,0 +1,9 @@
+:root {
+    --main-btn-color: #0a274e;
+    --main-color1: rgb(247, 255, 202);
+    --main-color2: rgb(25, 135, 84);
+}
+
+body{
+    background-color: var(--main-color1);
+}

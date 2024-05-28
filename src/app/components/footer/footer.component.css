@@ -1,0 +1,7 @@
+#pie{
+    background: var(--main-color2);
+    margin-top: 20px;
+    padding: 5px;
+    padding-top: 10px;
+    font-style: oblique;
+}

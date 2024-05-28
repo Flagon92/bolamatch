@@ -1,35 +1,61 @@
-h2{
-    margin-top: 30px;
-    margin-bottom: 20px;
+#formulario{
+    background: linear-gradient(rgba(196, 255, 191, 0.668),rgba(0, 95, 0, 0.57));
+    padding-bottom: 50px;
 }
 
-.col-sm-2{ 
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px;
+}
+.scrolling-wrapper .card {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+}
+
+h2 {
+    padding: 20px 30px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3rem;
+    letter-spacing: 5px;
+}
+
+.col-sm-2 {
     margin-right: 25px;
 }
 
-#registro{
+#registro {
+    background-color: rgba(222, 255, 160, 0.549);
+    background-image: url('pelota.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    position: relative; /* Necesario para el contenido absoluto */
     width: 700px;
+    border: 3px solid rgb(117, 128, 0);
     border-radius: 0.5em;
     box-shadow: 0px 0px 2px;
     padding: 30px 40px 30px 40px;
 }
 
-.form-control{
+.form-control {
     border-radius: 0.9em;
 }
 
-.boton1{
+.boton1 {
     text-align: center;
     padding-bottom: 10px;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: var(--main-btn-color);
     border: var(--main-btn-color);
     margin-top: 20px;
 }
 
-.card{
+.card {
     width: 20rem;
     border-radius: 1em;
     box-shadow: 0px 0px 5px var(--main-btn-color);

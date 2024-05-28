@@ -1,9 +1,8 @@
 <app-navbar></app-navbar>
 
-<app-registro></app-registro>
-
-<app-equipos></app-equipos>
+<app-registro (newParticipantEvent)="addParticipante($event)"></app-registro>
+<app-equipos [participantes]="participantes"></app-equipos>
+<app-duelos [participantes]="participantes"></app-duelos>
 
 <app-footer></app-footer>
-
-<router-outlet />
+<router-outlet></router-outlet>

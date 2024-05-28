@@ -59,47 +59,8 @@
 </div>
 </div>
 
-<div class="container">
-  <h2>Equipos</h2>
-  <div class="scrolling-wrapper row flex-row flex-nowrap">
-      <div class="col-4" *ngFor="let participante of participantes">
-          <div class="card">
-              <div class="card-body">
-                  <p class="card-title"><strong>Nombre Equipo:</strong> {{ participante.nombreEquipo }}</p>
-                  <p class="card-text"><strong>Procedencia:</strong> {{ participante.procedencia }}</p>
-                  <p class="card-text"><strong>Representante:</strong> {{ participante.representante }}</p>
-                  <p class="card-text"><strong>Correo Electrónico:</strong> {{ participante.email }}</p>
-                  <p class="card-text"><strong>Teléfono:</strong> {{ participante.telefono }}</p>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-
 <br>
 
-<div id="duelosContainer">
-  <div class="container">
-      <h2>Duelos</h2>
-      <div class="row">
-          <div class="col-md-6" *ngFor="let participante of participantes; let i = index">
-              <ng-container *ngIf="i % 2 === 0">
-                  <div class="card mb-3">
-                      <div class="card-body">
-                          <h5 class="card-title">{{ participante.nombreEquipo }}</h5>
-                          vs.
-                          <h5 class="card-title">{{ participantes[i + 1]?.nombreEquipo }}</h5>
-                      </div>
-                  </div>
-              </ng-container>
-          </div>
-      </div>
-  </div>
-</div>
-
-<div class="container">
-  <button class="btn btn-primary" (click)="randomizarEquipos()">Randomizar Equipos</button>
-</div>
 
   <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields

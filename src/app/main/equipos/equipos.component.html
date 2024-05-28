@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>Equipos</h2>
+    <div class="scrolling-wrapper row flex-row flex-nowrap">
+      <div class="col-md-4" *ngFor="let participante of participantes">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title"><strong>Nombre Equipo:</strong> {{ participante.nombreEquipo }}</p>
+            <p class="card-text"><strong>Procedencia:</strong> {{ participante.procedencia }}</p>
+            <p class="card-text"><strong>Representante:</strong> {{ participante.representante }}</p>
+            <p class="card-text"><strong>Correo Electrónico:</strong> {{ participante.email }}</p>
+            <p class="card-text"><strong>Teléfono:</strong> {{ participante.telefono }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

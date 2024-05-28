@@ -1,22 +1,23 @@
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    RouterOutlet
-  ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './registro.component.html',
-  styleUrl: './registro.component.css'
+  styleUrls: ['./registro.component.css']
 })
-
 export class RegistroComponent {
-  //almacena un nuevo participante
+  @Output() newParticipantEvent = new EventEmitter<{
+    nombreEquipo: string;
+    procedencia: string;
+    representante: string;
+    email: string;
+    telefono: string;
+  }>();
+
   nuevoParticipante = {
     nombreEquipo: '',
     procedencia: '',
@@ -25,24 +26,10 @@ export class RegistroComponent {
     telefono: ''
   };
 
-  //Lista de participantes
-  participantes: { nombreEquipo: string, 
-                  procedencia: string,
-                  representante: string,
-                  email: string,
-                  telefono: string }[] = [];
-
-  //Funcion para registrar un nuevo participante
   registrarParticipante() {
-    // Validar que todos los campos estén llenos antes de registrar
-    const camposVacios = this.validarCamposVacios(this.nuevoParticipante)
-    
+    const camposVacios = this.validarCamposVacios(this.nuevoParticipante);
     if (camposVacios.length === 0) {
-
-      // Agregar el nuevo participante a la lista
-      this.participantes.push({ ...this.nuevoParticipante });
-
-      // Limpiar el objeto nuevoParticipante para el siguiente registro
+      this.newParticipantEvent.emit({ ...this.nuevoParticipante });
       this.nuevoParticipante = {
         nombreEquipo: '',
         procedencia: '',
@@ -55,10 +42,14 @@ export class RegistroComponent {
     }
   }
 
-  validarCamposVacios(participante: { nombreEquipo: string; procedencia: string; representante: string; email: string; telefono: string }): string[] {
+  validarCamposVacios(participante: {
+    nombreEquipo: string;
+    procedencia: string;
+    representante: string;
+    email: string;
+    telefono: string;
+  }): string[] {
     const camposVacios: string[] = [];
-
-    //Comprovacion de campos vacios individualemnte
     if (!participante.nombreEquipo) {
       camposVacios.push('el Nombre del Equipo');
     }
@@ -74,36 +65,6 @@ export class RegistroComponent {
     if (!participante.telefono) {
       camposVacios.push('el numero de teléfono');
     }
-
     return camposVacios;
   }
-
-  randomizarEquipos() {
-
-    //Verificar si la cantidad de participantes es par
-    // if (this.participantes.length % 2 !== 0) {
-    //   alert ('Ingresa una cantidad par de equipos')
-    //   return;
-    // }
-
-    // Chocolatear los equipos
-    this.participantes = this.shuffle(this.participantes);
-  }
-  
-  private shuffle(array: { nombreEquipo: string, procedencia: string, representante: string, email: string, telefono: string }[]): { nombreEquipo: string, procedencia: string, representante: string, email: string, telefono: string }[] {
-    let currentIndex = array.length, randomIndex;
-
-    // Mientras queden elementos sin barajar
-    while (currentIndex != 0) {
-
-      // Elegir un objeto al azar
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // Y lo cambias de sitio con otro.
-      [array[currentIndex], array[randomIndex]] = 
-      [array[randomIndex], array[currentIndex]];
-    }
-    return array;
-}
 }

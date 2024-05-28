@@ -12,11 +12,36 @@ import { DuelosComponent } from './main/duelos/duelos.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, NavbarComponent, RegistroComponent, EquiposComponent, DuelosComponent, FooterComponent],
+  imports: [RouterOutlet, 
+    CommonModule, 
+    FormsModule, 
+    NavbarComponent, 
+    RegistroComponent, 
+    EquiposComponent, 
+    DuelosComponent, 
+    FooterComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html'
 })
 
-export class AppComponent { 
+export class AppComponent {
   title = 'bolamatch';
+
+  participantes: {
+    nombreEquipo: string;
+    procedencia: string;
+    representante: string;
+    email: string;
+    telefono: string;
+  }[] = [];
+
+  addParticipante(participante: {
+    nombreEquipo: string;
+    procedencia: string;
+    representante: string;
+    email: string;
+    telefono: string;
+  }) {
+    this.participantes.push(participante);
+  }
 }

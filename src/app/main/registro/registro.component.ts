@@ -26,10 +26,16 @@ export class RegistroComponent {
     telefono: ''
   };
 
+  errorMessage: string = '';
+
   registrarParticipante() {
+    
     const camposVacios = this.validarCamposVacios(this.nuevoParticipante);
+    
     if (camposVacios.length === 0) {
+
       this.newParticipantEvent.emit({ ...this.nuevoParticipante });
+
       this.nuevoParticipante = {
         nombreEquipo: '',
         procedencia: '',
@@ -38,7 +44,9 @@ export class RegistroComponent {
         telefono: ''
       };
     } else {
-      alert(`Por favor, ingresa ${camposVacios.join(', ')}`);
+
+      //alert(`Por favor, ingresa ${camposVacios.join(', ')}`);
+
     }
   }
 
@@ -50,6 +58,7 @@ export class RegistroComponent {
     telefono: string;
   }): string[] {
     const camposVacios: string[] = [];
+
     if (!participante.nombreEquipo) {
       camposVacios.push('el Nombre del Equipo');
     }

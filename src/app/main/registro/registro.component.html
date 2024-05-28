@@ -1,4 +1,7 @@
-<h2 class="text-center">Regístrate</h2>
+<div id="formulario">
+
+<h2 class="text-center">REGISTRATE AHORA!!</h2>
+<h6 class="text-center">No esperes más y compite con los demás para demostrar que eres el mejor!</h6>
 <div class="container was-validated" id="registro" novalidate>
   <div class="mb-3 row">
     <label class="col form-label" for="equipo">Equipo:</label>
@@ -54,59 +57,49 @@
     <button class="btn btn-primary" id="boton1" (click)="registrarParticipante()">Registrar Participante</button>
   </div>
 </div>
+</div>
 
 <div class="container">
-    <h2>Equipos</h2>
-    <div class="row">
-      <div class="col-md-4 mb-3" *ngFor="let participante of participantes">
-  
-        <!-- Itera sobre cada participante en la lista -->
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title"><strong>Nombre Equipo:</strong> {{ participante.nombreEquipo }}</p>
-            <!-- Muestra el nombre del equipo del participante -->
-            <p class="card-text"><strong>Procedencia:</strong> {{ participante.procedencia }}</p>
-            <!-- Muestra la procedencia del equipo del participante -->
-            <p class="card-text"><strong>Representante:</strong> {{ participante.representante }}</p>
-            <!-- Muestra el representante del equipo del participante -->
-            <p class="card-text"><strong>Correo Electrónico:</strong> {{ participante.email }}</p>
-            <!-- Muestra el email del representante del equipo del participante -->
-            <p class="card-text"><strong>Teléfono:</strong> {{ participante.telefono }}</p>
-            <!-- Muestra el teléfono del representante del equipo del participante -->
+  <h2>Equipos</h2>
+  <div class="scrolling-wrapper row flex-row flex-nowrap">
+      <div class="col-4" *ngFor="let participante of participantes">
+          <div class="card">
+              <div class="card-body">
+                  <p class="card-title"><strong>Nombre Equipo:</strong> {{ participante.nombreEquipo }}</p>
+                  <p class="card-text"><strong>Procedencia:</strong> {{ participante.procedencia }}</p>
+                  <p class="card-text"><strong>Representante:</strong> {{ participante.representante }}</p>
+                  <p class="card-text"><strong>Correo Electrónico:</strong> {{ participante.email }}</p>
+                  <p class="card-text"><strong>Teléfono:</strong> {{ participante.telefono }}</p>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+  </div>
 </div>
-  
-  <br>
-  
-  <div id="duelosContainer">
-    <div class="container">
+
+<br>
+
+<div id="duelosContainer">
+  <div class="container">
       <h2>Duelos</h2>
       <div class="row">
-        <div class="col-md-6" *ngFor="let participante of participantes; let i = index">
-          <!-- Itera sobre cada participante y obtiene su índice -->
-          <ng-container *ngIf="i % 2 === 0">
-            <!-- Verifica si el índice es par para mostrar solo las parejas de equipos -->
-            <div class="card mb-3">
-              <div class="card-body">
-                <!-- Muestra el nombre del equipo del participante en la posición i -->
-                <h5 class="card-title">{{ participante.nombreEquipo }}</h5>
-                vs.
-                <!-- Muestra el nombre del equipo del participante en la siguiente posición, si existe -->
-                <h5 class="card-title">{{ participantes[i + 1].nombreEquipo }}</h5>
-              </div>
-            </div>
-          </ng-container>
-        </div>
+          <div class="col-md-6" *ngFor="let participante of participantes; let i = index">
+              <ng-container *ngIf="i % 2 === 0">
+                  <div class="card mb-3">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ participante.nombreEquipo }}</h5>
+                          vs.
+                          <h5 class="card-title">{{ participantes[i + 1]?.nombreEquipo }}</h5>
+                      </div>
+                  </div>
+              </ng-container>
+          </div>
       </div>
-    </div>
   </div>
-  
-  <div class="container">
-    <button class="btn btn-primary" (click)="randomizarEquipos()">Randomizar Equipos</button>
-  </div>
+</div>
+
+<div class="container">
+  <button class="btn btn-primary" (click)="randomizarEquipos()">Randomizar Equipos</button>
+</div>
 
   <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields

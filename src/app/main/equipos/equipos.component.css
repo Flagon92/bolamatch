@@ -14,3 +14,14 @@
     border-radius: 1em;
     box-shadow: 0px 0px 5px var(--main-btn-color);
 }
+
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px;
+}
+.scrolling-wrapper .card {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+}

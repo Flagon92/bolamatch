@@ -16,4 +16,9 @@ export class EquiposComponent {
     email: string, 
     telefono: string 
   }[] = [];
+
+  borrarEquipo(index: number) {
+    this.participantes.splice(index, 1);
+  }
+
 }

@@ -17,8 +17,17 @@ export class DuelosComponent {
     telefono: string 
   }[] = [];
 
+  duelosArreglo: { 
+    nombreEquipo: string, 
+    procedencia: string, 
+    representante: string, 
+    email: string, 
+    telefono: string 
+  }[] = [];
+
   randomizarEquipos() {
-    this.participantes = this.shuffle(this.participantes);
+    this.duelosArreglo = [...this.participantes];
+    this.duelosArreglo = this.shuffle(this.duelosArreglo);
   }
   
   private shuffle(array: { 

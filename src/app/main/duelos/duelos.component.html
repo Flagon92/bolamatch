@@ -1,22 +1,21 @@
 <div id="duelosContainer">
-    <div class="container">
-      <h2>Duelos</h2>
-      <div class="row">
-        <div class="col-md-6" *ngFor="let participante of participantes; let i = index">
-          <ng-container *ngIf="i % 2 === 0">
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title">{{ participante.nombreEquipo }}</h5>
-                vs.
-                <h5 class="card-title">{{ participantes[i + 1].nombreEquipo }}</h5>
-              </div>
+  <div class="container">
+    <h2>Duelos</h2>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let participante of duelosArreglo; let i = index">
+        <ng-container *ngIf="i % 2 === 0">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ participante.nombreEquipo }}</h5>
+              vs.
+              <h5 class="card-title">{{ duelosArreglo[i + 1].nombreEquipo || 'TBD' }}</h5>
             </div>
-          </ng-container>
-        </div>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>
-  <div class="container">
-    <button class="btn btn-primary" (click)="randomizarEquipos()">Randomizar Equipos</button>
-  </div>
-  
+</div>
+<div class="container">
+  <button class="btn btn-primary" (click)="randomizarEquipos()">Randomizar Equipos</button>
+</div>

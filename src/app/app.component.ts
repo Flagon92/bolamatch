@@ -8,6 +8,8 @@ import { EquiposComponent } from './main/equipos/equipos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DuelosComponent } from './main/duelos/duelos.component';
+import { ViewComponent } from './view/view.component';
+import { SharedService } from './shared.service';
 
 @Component({
   selector: 'app-root',
@@ -19,29 +21,14 @@ import { DuelosComponent } from './main/duelos/duelos.component';
     RegistroComponent, 
     EquiposComponent, 
     DuelosComponent, 
-    FooterComponent],
+    FooterComponent,
+    ViewComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html'
 })
 
 export class AppComponent {
-  title = 'bolamatch';
 
-  participantes: {
-    nombreEquipo: string;
-    procedencia: string;
-    representante: string;
-    email: string;
-    telefono: string;
-  }[] = [];
+  constructor(public sharedService: SharedService){}
 
-  addParticipante(participante: {
-    nombreEquipo: string;
-    procedencia: string;
-    representante: string;
-    email: string;
-    telefono: string;
-  }) {
-    this.participantes.push(participante);
-  }
 }

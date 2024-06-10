@@ -1,68 +1,61 @@
 <div id="formulario">
-
-<h2 class="text-center">REGISTRATE AHORA!!</h2>
-<h6 class="text-center">No esperes más y compite con los demás para demostrar que eres el mejor!</h6>
-
-
-
-<div class="container was-validated" id="registro" novalidate>
+  <br>
+<form class="container was-validated" id="registro" novalidate #formContact="ngForm">
   <div class="mb-3 row">
     <label class="col form-label" for="equipo">Equipo:</label>
-    <input type="text" class="form-control" id="equipo" placeholder="Nombre del equipo"[(ngModel)]="nuevoParticipante.nombreEquipo" required>
+    <input type="text" name="equipo" class="form-control" id="equipo" placeholder="Nombre del equipo"[(ngModel)]="sharedService.nuevoParticipante.nombreEquipo" required #equipo="ngModel">
     <div class="valid-feedback">
       </div>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" [hidden]="equipo.valid || equipo.pristine">
         Ingrese nombre del Equipo
       </div>
   </div>
 
   <div class="mb-3 row">
     <label class="col form-label" for="procedencia">Procedencia:</label>
-    <input type="text" class="form-control" id="procedencia" placeholder="Procedencia" [(ngModel)]="nuevoParticipante.procedencia" required>
+    <input type="text" name="procedencia" class="form-control" id="procedencia" placeholder="Procedencia" [(ngModel)]="sharedService.nuevoParticipante.procedencia" required #procedencia="ngModel">
     <div class="valid-feedback">
       </div>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" [hidden]="procedencia.valid || procedencia.pristine">
         Ingrese la procedencia
       </div>
   </div>
 
   <div class="mb-3 row">
     <label class="col form-label" for="representante">Representante:</label>
-    <input type="text" class="form-control" id="representante" placeholder="Representante" [(ngModel)]="nuevoParticipante.representante" required>
+    <input type="text" name="representante" class="form-control" id="representante" placeholder="Representante" [(ngModel)]="sharedService.nuevoParticipante.representante" required required #representante="ngModel">
     <div class="valid-feedback">
       </div>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" [hidden]="representante.valid || representante.pristine">
         Ingrese el representante
       </div>
   </div>
 
   <div class="mb-3 row">
     <label class="col form-label" for="correo" >Correo Electrónico: </label>
-    <input type="text" class="form-control" id="correo" placeholder="Correo Electrónico" [(ngModel)]="nuevoParticipante.email" required>
+    <input type="text" name="email" class="form-control" id="correo" placeholder="Correo Electrónico" [(ngModel)]="sharedService.nuevoParticipante.email" required required #email="ngModel">
     <div class="valid-feedback">
       </div>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" [hidden]="email.valid || email.pristine">
         Ingrese el correo electronico
       </div>
   </div>
 
   <div class="mb-3 row">
     <label class="col form-label" for="telefono" >Telefono:</label>
-    <input type="text" class="form-control" id="telefono" placeholder="Teléfono" [(ngModel)]="nuevoParticipante.telefono" required>
+    <input type="text" name="phone" class="form-control" id="telefono" placeholder="Teléfono" [(ngModel)]="sharedService.nuevoParticipante.telefono" required required #phone="ngModel">
     <div class="valid-feedback">
       </div>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" [hidden]="phone.valid || phone.pristine">
         Ingrese el telefono
       </div>
   </div>
 
   <div class="container boton1">
-    <button class="btn btn-primary" id="boton1" (click)="registrarParticipante()">Registrar Participante</button>
+    <button class="btn btn-primary" [disabled]="formContact.invalid" id="boton1" (click)="sharedService.registrarParticipante()">Registrar Participante</button>
   </div>
+</form>
 </div>
-</div>
-
-<br>
 
 
   <script>

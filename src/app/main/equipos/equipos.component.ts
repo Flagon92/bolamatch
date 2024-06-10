@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-equipos',
@@ -9,16 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./equipos.component.css']
 })
 export class EquiposComponent {
-  @Input() participantes: { 
-    nombreEquipo: string, 
-    procedencia: string, 
-    representante: string, 
-    email: string, 
-    telefono: string 
-  }[] = [];
 
-  borrarEquipo(index: number) {
-    this.participantes.splice(index, 1);
-  }
+  constructor(public sharedService: SharedService){}
 
 }

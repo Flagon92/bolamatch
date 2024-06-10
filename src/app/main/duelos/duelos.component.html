@@ -2,20 +2,27 @@
   <div class="container">
     <h2>Duelos</h2>
     <div class="row">
-      <div class="col-md-6" *ngFor="let participante of duelosArreglo; let i = index">
+      <div class="col-md-6" *ngFor="let participante of sharedService.duelosArreglo; let i = index">
         <ng-container *ngIf="i % 2 === 0">
           <div class="card mb-3">
             <div class="card-body">
               <h5 class="card-title">{{ participante.nombreEquipo }}</h5>
               vs.
-              <h5 class="card-title">{{ duelosArreglo[i + 1].nombreEquipo || 'TBD' }}</h5>
+              <h5 class="card-title">{{ sharedService.duelosArreglo[i + 1].nombreEquipo || 'TBD' }}</h5>
             </div>
           </div>
         </ng-container>
       </div>
     </div>
+    <div>
+      <h2 class="no-registred pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length >= 4">DEBEN EXISTIR MÍNIMO 4
+        EQUIPOS PARA SORTEAR</h2>
+    </div>
   </div>
 </div>
-<div class="container">
-  <button class="btn btn-primary" (click)="randomizarEquipos()">Randomizar Equipos</button>
+<div class="container row col-3">
+  <button class="btn btn-primary mt-3"
+    [disabled]="sharedService.sortearDeshabilitado || sharedService.participantes.length < 4"
+    (click)="sharedService.randomizarEquipos()">SORTEAR</button>
+  <button class="btn btn-success mt-3" (click)="sharedService.hecho()">HECHO</button>
 </div>

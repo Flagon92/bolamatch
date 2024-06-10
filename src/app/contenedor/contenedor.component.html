@@ -1,0 +1,26 @@
+<h1 class="mb-4 pt-4 pb-4">ORGANIZA TU MEJOR TORNEO YA!</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a routerLink="registro" class="list-group-item list-group-item-action" routerLinkActive="active">Registro</a>
+                <a routerLink="equipos" class="list-group-item list-group-item-action" routerLinkActive="active">Equipos</a>
+                <a routerLink="duelos" class="list-group-item list-group-item-action" routerLinkActive="active">Duelos</a>
+                <a routerLink="clasificados" class="list-group-item list-group-item-action" routerLinkActive="active">Resultados</a>
+                <a routerLink="opciones" class="list-group-item list-group-item-action" routerLinkActive="active">Opciones</a>
+            </div>
+            <div>
+                <img class="bicho" src="../../assets/cr7-neymar.jpg" alt="el bicho y neymar">
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+

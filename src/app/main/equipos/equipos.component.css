@@ -25,3 +25,14 @@
     flex: 0 0 auto;
     margin-right: 1rem;
 }
+
+.no-registred{
+    text-align: center;
+    color: rgba(123, 121, 119, 0.836);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3rem;
+}
+
+.mbappe-like{
+    width: 20%;
+}

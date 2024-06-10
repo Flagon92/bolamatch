@@ -1,7 +1,6 @@
 <div class="container">
-  <h2>Equipos</h2>
   <div class="scrolling-wrapper row flex-row flex-nowrap">
-    <div class="col-md-4" *ngFor="let participante of participantes; let i = index">
+    <div class="col-md-4" *ngFor="let participante of sharedService.participantes; let i = index">
       <div class="card">
         <div class="card-body">
           <p class="card-title"><strong>Nombre Equipo:</strong> {{ participante.nombreEquipo }}</p>
@@ -9,9 +8,16 @@
           <p class="card-text"><strong>Representante:</strong> {{ participante.representante }}</p>
           <p class="card-text"><strong>Correo Electrónico:</strong> {{ participante.email }}</p>
           <p class="card-text"><strong>Teléfono:</strong> {{ participante.telefono }}</p>
-          <button type="button" class="btn btn-danger" (click)="borrarEquipo(i)">Eliminar</button>
+          <button type="button" class="btn btn-danger" (click)="sharedService.borrarEquipo(i)">Eliminar</button>
         </div>
       </div>
     </div>
+  </div>
+  <div class="text-center pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length == 0">
+    <h2>TIENES {{sharedService.participantes.length}} EQUIPOS REGISTRADOS</h2>
+    <img class="mbappe-like" src="../../../assets/mbappe-like.png" alt="">
+  </div>
+  <div>
+    <h2 class="no-registred pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length > 0">AÚN NO HAY EQUIPOS REGISTRADOS</h2>
   </div>
 </div>

@@ -225,6 +225,14 @@ export class SharedService {
       }
     }
   }
+
+  // ESTE METODO NOS PERMITE REEMPLAZAR EL CONTENIDO DEL ARREGLO DE DUELOS CON EL DE GANADORES, FUNCIONALMENTE AVANZANDONOS A UNA SEGUNDA RONDA.
+  siguienteRonda() {
+    this.duelosArreglo = this.winners.map(winnerName => {
+      return this.participantes.find(participante => participante.nombreEquipo === winnerName)!;
+    });
+    this.winners = [];
+  }
 }
 
 

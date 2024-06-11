@@ -20,4 +20,8 @@ export class ClasificadosComponent {
     this.sharedService.getNombresEquipos();
   }
 
+  siguienteRonda() {
+    this.sharedService.siguienteRonda();
+  }
+
 }

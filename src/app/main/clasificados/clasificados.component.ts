@@ -16,9 +16,7 @@ export class ClasificadosComponent {
   constructor(public sharedService: SharedService){}
 
 
-  ngOnInit(): void {
-    this.sharedService.getNombresEquipos();
-  }
+  
 
   siguienteRonda() {
     this.sharedService.siguienteRonda();

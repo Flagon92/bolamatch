@@ -24,7 +24,5 @@
   <button class="btn btn-primary mt-3"
     [disabled]="sharedService.sortearDeshabilitado || sharedService.participantes.length < 4"
     (click)="sharedService.randomizarEquipos()">SORTEAR</button>
-  <button class="btn btn-success mt-3" [disabled]="sharedService.sortearDeshabilitado"
-    (click)="sharedService.hecho()">HECHO</button>
+  <button class="btn btn-success mt-3" (click)="sharedService.hecho()">HECHO</button>
 </div>
-

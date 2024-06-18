@@ -10,11 +10,11 @@
           <div class="col-md-12" *ngFor="let duelo of sharedService.duelosIndependientes; let i = index">
             <div class="card mb-3">
               <div class="card-body">
-                <h5 class="card-title">{{ sharedService.duelosArreglo[i * 2].nombreEquipo }}</h5>
+                <h5 class="card-title">{{ sharedService.names[i * 2] }}</h5>
                 <input type="number" [(ngModel)]="duelo.score1" class="col-1" placeholder="Equipo 1">
                 vs.
                 <input type="number" [(ngModel)]="duelo.score2" class="col-1" placeholder="Equipo 2">
-                <h5 class="card-title">{{ sharedService.duelosArreglo[i * 2 + 1].nombreEquipo}}</h5>
+                <h5 class="card-title">{{ sharedService.names[i * 2 + 1]}}</h5>
               </div>
             </div>
           </div>

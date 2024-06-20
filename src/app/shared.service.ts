@@ -225,11 +225,20 @@ export class SharedService {
 
   // ESTE METODO NOS PERMITE REEMPLAZAR EL CONTENIDO DEL ARREGLO DE DUELOS CON EL DE GANADORES, FUNCIONALMENTE AVANZANDONOS A UNA SEGUNDA RONDA.
   siguienteRonda() {
-    this.duelosArreglo = this.winners.map(winnerName => {
-      return this.participantes.find(participante => participante.nombreEquipo === winnerName)!;
-    });
-    this.winners = [];
+    // Sacamos a los perdedores del arreglo de participantes
+    this.participantes = this.participantes.filter(participante =>
+      this.winners.includes(participante.nombreEquipo)
+    );
+    this.duelosArreglo = [...this.participantes];
+  
+    // Limpiamos los arreglos
+    this.resultadosArreglo = [];
     this.duelosIndependientes = [];
+    this.names = [];
+    this.winners = [];
+  
+    // Desbloqueamos el botón de sortear
+    this.sortearDeshabilitado = false;
   }
 }
 

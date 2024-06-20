@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +7,6 @@ export class SharedService {
 
   constructor() { }
 
-  @Output() newParticipantEvent = new EventEmitter<{
-    nombreEquipo: string;
-    procedencia: string;
-    representante: string;
-    email: string;
-    telefono: string;
-  }>();
 
   //LISTA DE PARTICIPANTES----------------------
   participantes: {
@@ -132,8 +125,11 @@ export class SharedService {
 
   sortearDeshabilitado: boolean = false;
 
-  hecho() {
-    this.sortearDeshabilitado = true;//PARA FINALIZAR EL SORTEO Y NO SE PUEDA SORTEAR MÁS 
+  hecho() { 
+    this.sortearDeshabilitado = true;//PARA FINALIZAR EL SORTEO Y NO SE PUEDA SORTEAR MÁS
+    this.resultadosArreglo = [...this.duelosArreglo];//COPIO TODO DE DUELOS ARREGLO A RESULTADOS ARREGLO
+    this.names = this.resultadosArreglo.map(equipo => equipo.nombreEquipo);// ALMACENO CADA NOMBRE EN UN NUEVO ARRAY LLAMADO NAMES
+    this.winnersTotal = [this.names]//ESTO AUN NO LO USAMOS, PARA PROXIMOS AVANCES
   }
 
   private shuffle(array: {
@@ -179,13 +175,13 @@ export class SharedService {
   instanciaDuelos() {
     if (this.duelosIndependientes.length === 0) {
 
-      for (let i = 0; i < this.names.length; i += 2) {
+      for (let i = 0; i < this.duelosArreglo.length; i += 2) {
         this.duelosIndependientes.push(this.nuevoDuelo);//PONEMOS LOS DOS PUNTAJES, O SEA EL OBJETO EN DUELOS INDEPENDIENTES
 
         this.nuevoDuelo = {
           score1: 0,
           score2: 0
-        };
+        };  
       }
     }
   }
@@ -197,10 +193,6 @@ export class SharedService {
 
   names: string[] = [];//ARRAY PARA ALMACENAR CADA NOMBRE DE LOS EQUIPOS
 
-  getNombresEquipos() {
-    this.resultadosArreglo.push(...this.duelosArreglo);//COPIO TODO DE DUELOS ARREGLO A RESULTADOS ARREGLO
-    this.names = this.resultadosArreglo.map(equipo => equipo.nombreEquipo);// ALMACENO CADA NOMBRE EN UN NUEVO ARRAY LLAMADO NAMES
-  }
 
   borrarPuntajes() {
     for (let duelo of this.duelosIndependientes) {
@@ -213,10 +205,10 @@ export class SharedService {
   winners: string[] = [];
 
   winner() {
-    if (this.winners.length === 0){
+    if (this.winners.length === 0) {
 
       for (let i = 0; i < this.duelosIndependientes.length; i++) {
-  
+
         if (this.duelosIndependientes[i].score1 > this.duelosIndependientes[i].score2) {
           this.winners.push(this.names[i * 2]);
         } else if (this.duelosIndependientes[i].score1 < this.duelosIndependientes[i].score2) {
@@ -228,20 +220,11 @@ export class SharedService {
 
   // ESTE METODO NOS PERMITE REEMPLAZAR EL CONTENIDO DEL ARREGLO DE DUELOS CON EL DE GANADORES, FUNCIONALMENTE AVANZANDONOS A UNA SEGUNDA RONDA.
   siguienteRonda() {
-    // Sacamos a los perdedores del arreglo de participantes
-    this.participantes = this.participantes.filter(participante =>
-      this.winners.includes(participante.nombreEquipo)
-    );
-    this.duelosArreglo = [...this.participantes];
-  
-    // Limpiamos los arreglos
-    this.resultadosArreglo = [];
-    this.duelosIndependientes = [];
-    this.names = [];
+    this.duelosArreglo = this.winners.map(winnerName => {
+      return this.participantes.find(participante => participante.nombreEquipo === winnerName)!;
+    });
     this.winners = [];
-  
-    // Desbloqueamos el botón de sortear
-    this.sortearDeshabilitado = false;
+    this.duelosIndependientes = [];
   }
 }
 

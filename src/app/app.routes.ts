@@ -10,6 +10,7 @@ import { DuelosComponent } from './main/duelos/duelos.component';
 import { ClasificadosComponent } from './main/clasificados/clasificados.component';
 import { OpcionesComponent } from './main/opciones/opciones.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BracketComponent } from './main/bracket/bracket.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,10 @@ export const routes: Routes = [
             {
                 path: 'clasificados',
                 component: ClasificadosComponent
+            },
+            {
+                path: 'bracket',
+                component: BracketComponent
             },
             {
                 path: 'opciones',

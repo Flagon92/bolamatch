@@ -244,41 +244,25 @@ export class SharedService {
 
 
   // FUNCIONES PARA BRACKET COMPONENT
-  matches: { player1: string, player2: string, winner: string }[] = [
-    { player1: '', player2: '', winner: '' },
-    { player1: '', player2: '', winner: '' },
-    { player1: '', player2: '', winner: '' },
-    { player1: '', player2: '', winner: '' },
-  ];
-
-  getParticipantes(): Observable<
-    {
-      nombreEquipo: string;
-      procedencia: string;
-      representante: string;
-      email: string;
-      telefono: string;
-    }[]
-  > {
+   // Methods to get participants and duels
+   getParticipantes(): Observable<{
+    nombreEquipo: string;
+    procedencia: string;
+    representante: string;
+    email: string;
+    telefono: string;
+  }[]> {
     return of(this.participantes);
   }
 
-  selectWinner(match: { player1: string, player2: string, winner: string }, player: 'player1' | 'player2') {
-    match.winner = match[player];
-    this.advanceWinner(match.winner);
-  }
-
-  advanceWinner(winner: string) {
-    const nextMatch = this.matches.find((m) => m.winner === '');
-    if (nextMatch) {
-      if (!nextMatch.player1) {
-        nextMatch.player1 = winner;
-      } else {
-        nextMatch.player2 = winner;
-      }
-    }
-
-    
+  getDuelos(): Observable<{
+    nombreEquipo: string;
+    procedencia: string;
+    representante: string;
+    email: string;
+    telefono: string;
+  }[]> {
+    return of(this.duelosArreglo);
   }
   
   

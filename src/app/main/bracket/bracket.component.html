@@ -1,21 +1,8 @@
-<div class="bracket-container">
-  <h2>Bracket</h2>
-
-  <div *ngFor="let match of sharedService.matches; let i = index" class="match">
-    <div class="player">
-      <span>{{ match.player1 }}</span>
-      <button *ngIf="match.player1 && !match.winner" (click)="sharedService.selectWinner(match, 'player1')">Select Winner</button>
-    </div>
-
-    <div class="player">
-      <span>{{ match.player2 }}</span>
-      <button *ngIf="match.player2 && !match.winner" (click)="sharedService.selectWinner(match, 'player2')">Select Winner</button>
-    </div>
-
-    <div class="winner" *ngIf="match.winner">
-      <strong>Winner: {{ match.winner }}</strong>
-    </div>
+<div *ngFor="let duelo of duelos">
+  <div *ngIf="duelo.length == 2">
+    <div>{{ duelo[0].nombreEquipo }} vs {{ duelo[1].nombreEquipo }}</div>
   </div>
-
-  <button (click)="sharedService.siguienteRonda()">Next Round</button>
+  <div *ngIf="duelo.length == 1">
+    <div>{{ duelo[0].nombreEquipo }} advances automatically</div>
+  </div>
 </div>

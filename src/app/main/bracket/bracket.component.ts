@@ -12,12 +12,28 @@ import { SharedService } from '../../shared.service';
 })
 export class BracketComponent {
 
-  constructor(public sharedService: SharedService){}
+  duelos: {
+    nombreEquipo: string;
+    procedencia: string;
+    representante: string;
+    email: string;
+    telefono: string;
+  }[][] = [];
+
+  constructor(public sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.sharedService.getParticipantes().subscribe((data) => {
-      this.sharedService.participantes = data;
+    this.sharedService.getDuelos().subscribe((data) => {
+      this.duelos = this.chunkArray(data, 2);
     });
+  }
+
+  private chunkArray(myArray: any[], chunk_size: number) {
+    const results = [];
+    while (myArray.length) {
+      results.push(myArray.splice(0, chunk_size));
+    }
+    return results;
   }
 
 

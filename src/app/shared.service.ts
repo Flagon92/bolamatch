@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -230,6 +231,93 @@ export class SharedService {
     });
     this.winners = [];
   }
+
+
+  // FUNCIONES PARA BRACKET COMPONENT
+  Jugadores: string[] = [];
+  ganadoresRonda: string[] = [];
+  numeroRonda: number = 1;
+  partidos: number[] = [];
+  mensaje: string = '';
+
+  getParticipantes(): Observable<
+    {
+      nombreEquipo: string;
+      procedencia: string;
+      representante: string;
+      email: string;
+      telefono: string;
+    }[]
+  > {
+    return of(this.participantes);
+  }
+
+  setJugadores() {
+    this.Jugadores = this.participantes.map(p => p.nombreEquipo);
+  }
+
+  setPartidos() {
+    if (this.Jugadores.length <= 1) {
+      throw new Error('No hay suficientes jugadores registrados para un partido');
+    } else if (this.Jugadores.length === 2) {
+      this.resetJugadores();
+      this.partidos.pop();
+    } else if (this.Jugadores.length === 4) {
+      this.partidos.pop();
+      this.numeroRonda++;
+    } else {
+      this.partidos.pop();
+      this.partidos.pop();
+      this.numeroRonda++;
+    }
+  }
+
+  onSubmit() {
+    this.mensaje = '';
+
+    // validate
+    let modifiedWinners = this.ganadoresRonda.filter((winner) => winner !== '');
+    if (modifiedWinners.length != this.partidos.length) {
+      this.mensaje = 'Por favor, selecciona un ganador para cada partido';
+      throw new Error('Por favor, selecciona un ganador para cada partido');
+    }
+
+    this.setPartidos();
+
+    // keep track of winners
+    this.Jugadores = [];
+    for (let index = 0; index < this.ganadoresRonda.length; index++) {
+      this.Jugadores[index] = this.ganadoresRonda[index];
+    }
+
+    // declare winner and/or reset for another round
+    if (this.ganadoresRonda.length === 1) {
+      this.mensaje = 'Ganador: ' + this.ganadoresRonda[0];
+      this.ganadoresRonda = [];
+    } else {
+      this.ganadoresRonda = [];
+    }
+  }
+
+  addPartidos() {
+    for (let index = 1; index < this.Jugadores.length / 2 + 1; index++)
+      this.partidos.push(index);
+  }
+
+  trackByFn(index: any, item: any) {
+    return index;
+  }
+
+  resetJugadores() {
+    this.participantes = [];
+    this.Jugadores = [];
+    this.ganadoresRonda = [];
+    this.numeroRonda = 1;
+    this.partidos = [];
+    this.mensaje = '';
+  }
+  
+
 }
 
 

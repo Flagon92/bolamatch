@@ -1,0 +1,54 @@
+<div style="text-align:center">
+  <p>{{sharedService.mensaje}}</p>
+  <div *ngIf="sharedService.Jugadores.length <= 1; else firstElseBlock">
+  </div>
+  <ng-template #firstElseBlock>
+    <h2>Ronda {{ sharedService.numeroRonda }}</h2>
+    <form (submit)="sharedService.onSubmit()">
+      <div *ngFor="let amount of sharedService.partidos; let i = index; trackBy: sharedService.trackByFn">
+        <h3>Partido {{ i + 1 }}</h3>
+        <div *ngIf="i === 0; else secondElseBlock">
+          <div>
+            <input
+              type="radio"
+              value="{{ sharedService.Jugadores[i] }}"
+              name="Partido{{ i }}"
+              [(ngModel)]="sharedService.ganadoresRonda[i]"
+            />
+            <label for="{{ sharedService.Jugadores[i] }}">{{ sharedService.Jugadores[i] }}</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="{{ sharedService.Jugadores[i + 1] }}"
+              name="Partido{{ i }}"
+              [(ngModel)]="sharedService.ganadoresRonda[i]"
+            />
+            <label for="{{ sharedService.Jugadores[i + 1] }}">{{ sharedService.Jugadores[i + 1] }}</label>
+          </div>
+        </div>
+        <ng-template #secondElseBlock>
+          <div>
+            <input
+              type="radio"
+              value="{{ sharedService.Jugadores[i * 2] }}"
+              name="Partido{{ i }}"
+              [(ngModel)]="sharedService.ganadoresRonda[i]"
+            />
+            <label for="{{ sharedService.Jugadores[i * 2] }}">{{ sharedService.Jugadores[i * 2] }}</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="{{ sharedService.Jugadores[i * 2 + 1] }}"
+              name="Partido{{ i }}"
+              [(ngModel)]="sharedService.ganadoresRonda[i]"
+            />
+            <label for="{{ sharedService.Jugadores[i * 2 + 1] }}">{{ sharedService.Jugadores[i * 2 + 1] }}</label>
+          </div>
+        </ng-template>
+      </div>
+      <button type="submit">Completar Ronda</button>
+    </form>
+  </ng-template>
+</div>

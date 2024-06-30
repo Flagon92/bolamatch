@@ -1,0 +1,25 @@
+.bracket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .round {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 20px;
+  }
+  
+  .match {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  
+  .team {
+    display: flex;
+    align-items: center;
+  }
+  

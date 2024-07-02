@@ -6,9 +6,6 @@ import { ColaboracionesComponent } from './main/colaboraciones/colaboraciones.co
 import { VotacionesComponent } from './main/votaciones/votaciones.component';
 import { ContenedorComponent } from './contenedor/contenedor.component';
 import { EquiposComponent } from './main/equipos/equipos.component';
-import { DuelosComponent } from './main/duelos/duelos.component';
-import { ClasificadosComponent } from './main/clasificados/clasificados.component';
-import { OpcionesComponent } from './main/opciones/opciones.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BracketComponent } from './main/bracket/bracket.component';
 
@@ -35,20 +32,8 @@ export const routes: Routes = [
                 component: EquiposComponent
             },
             {
-                path: 'duelos',
-                component: DuelosComponent
-            },
-            {
-                path: 'clasificados',
-                component: ClasificadosComponent
-            },
-            {
                 path: 'bracket',
                 component: BracketComponent
-            },
-            {
-                path: 'opciones',
-                component: OpcionesComponent
             }
         ]
     },

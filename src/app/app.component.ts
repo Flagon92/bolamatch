@@ -7,7 +7,6 @@ import { RegistroComponent } from './main/registro/registro.component';
 import { EquiposComponent } from './main/equipos/equipos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { DuelosComponent } from './main/duelos/duelos.component';
 import { ViewComponent } from './view/view.component';
 import { SharedService } from './shared.service';
 
@@ -19,8 +18,7 @@ import { SharedService } from './shared.service';
     FormsModule, 
     NavbarComponent, 
     RegistroComponent, 
-    EquiposComponent, 
-    DuelosComponent, 
+    EquiposComponent,
     FooterComponent,
     ViewComponent],
   styleUrl: './app.component.css',

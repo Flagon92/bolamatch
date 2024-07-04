@@ -26,9 +26,14 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px 0;
+  margin: 15px 0;
   position: relative;
   width: 100%;
+}
+
+.item{
+  border-radius: 7px;
+  background-color: #28a745;
 }
 
 div:not(.bracket) {
@@ -83,4 +88,18 @@ section:nth-child(4) li:before {
   position: absolute;
   right: -12px;
   width: 12px;
+}
+
+a{
+  text-decoration: none;
+  padding: 5px 8px;
+  color: #FFF;
+  display: block;
+  font-weight: 400;
+  transition: .3s;
+}
+
+hr{
+  margin: 0;
+  color: #FFF;
 }

@@ -147,8 +147,13 @@
     <ol>
       <li>
         <div class="item">
-          <a href="#">{{ partidos[0]?.nombreEquipo }}</a><hr>
-          <a href="#">{{ partidos[1]?.nombreEquipo }}</a>
+          <a href="#">{{ partidos[0]?.nombreEquipo }}</a> 
+          <button (click)="agregarGanador(partidos.indexOf(partidos[i]))">Ganador</button>
+
+ <hr>
+          <a href="#">{{ partidos[1]?.nombreEquipo }}</a> 
+          <button (click)="agregarGanador(partidos.indexOf(partidos[i]))">Ganador</button>
+
         </div>
       </li>
       <li>

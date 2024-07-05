@@ -1,17 +1,19 @@
 <div class="container">
-  <div class="scrolling-wrapper row flex-row flex-nowrap">
-    <div class="col-md-4" *ngFor="let participante of sharedService.participantes; let i = index">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-title"><strong>Nombre Equipo:</strong> {{ participante.nombreEquipo }}</p>
-          <p class="card-text"><strong>Procedencia:</strong> {{ participante.procedencia }}</p>
-          <p class="card-text"><strong>Representante:</strong> {{ participante.representante }}</p>
-          <p class="card-text"><strong>Correo Electrónico:</strong> {{ participante.email }}</p>
-          <p class="card-text"><strong>Teléfono:</strong> {{ participante.telefono }}</p>
-          <button type="button" class="btn btn-danger" (click)="sharedService.borrarEquipo(i)">Eliminar</button>
+  <div class="row row-cols-3">
+    <div *ngFor="let participante of sharedService.participantes; let i = index">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title"><strong>Equipo:</strong> {{ participante.nombreEquipo }}</p>
+            <p class="card-text"><strong>Procedencia:</strong> {{ participante.procedencia }}</p>
+            <p class="card-text"><strong>Representante:</strong> {{ participante.representante }}</p>
+            <p class="card-text"><strong>Correo Electrónico:</strong> {{ participante.email }}</p>
+            <p class="card-text"><strong>Teléfono:</strong> {{ participante.telefono }}</p>
+            <button type="button" class="btn btn-danger" (click)="sharedService.borrarEquipo(i)">Eliminar</button>
+          </div>
         </div>
       </div>
-    </div>
+  </div>
   </div>
   <div class="text-center pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length == 0">
     <h2>TIENES {{sharedService.participantes.length}} EQUIPOS REGISTRADOS</h2>

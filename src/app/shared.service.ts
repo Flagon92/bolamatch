@@ -122,16 +122,18 @@ export class SharedService {
   randomizarEquipos() {
     this.duelosArreglo = [...this.participantes];
     this.duelosArreglo = this.shuffle(this.duelosArreglo);
+    this.resultadosArreglo = [...this.duelosArreglo];
+    this.names = this.resultadosArreglo.map(equipo => equipo.nombreEquipo);
+    this.winnersTotal = [this.names]
+    
   }
 
-  sortearDeshabilitado: boolean = false;
-
-  hecho() { 
-    this.sortearDeshabilitado = true;//PARA FINALIZAR EL SORTEO Y NO SE PUEDA SORTEAR MÁS
-    this.resultadosArreglo = [...this.duelosArreglo];//COPIO TODO DE DUELOS ARREGLO A RESULTADOS ARREGLO
-    this.names = this.resultadosArreglo.map(equipo => equipo.nombreEquipo);// ALMACENO CADA NOMBRE EN UN NUEVO ARRAY LLAMADO NAMES
-    this.winnersTotal = [this.names]//ESTO AUN NO LO USAMOS, PARA PROXIMOS AVANCES
-  }
+  //hecho() { 
+    //this.sortearDeshabilitado = true;//PARA FINALIZAR EL SORTEO Y NO SE PUEDA SORTEAR MÁS
+    //this.resultadosArreglo = [...this.duelosArreglo];//COPIO TODO DE DUELOS ARREGLO A RESULTADOS ARREGLO
+    //this.names = this.resultadosArreglo.map(equipo => equipo.nombreEquipo);// ALMACENO CADA NOMBRE EN UN NUEVO ARRAY LLAMADO NAMES
+    //this.winnersTotal = [this.names]//ESTO AUN NO LO USAMOS, PARA PROXIMOS AVANCES
+  //}
 
   private shuffle(array: {
     nombreEquipo: string,
@@ -224,98 +226,7 @@ export class SharedService {
     }
   }
 
-  // ESTE METODO NOS PERMITE REEMPLAZAR EL CONTENIDO DEL ARREGLO DE DUELOS CON EL DE GANADORES, FUNCIONALMENTE AVANZANDONOS A UNA SEGUNDA RONDA.
-  siguienteRonda() {
-    this.duelosArreglo = this.winners.map(winnerName => {
-      return this.participantes.find(participante => participante.nombreEquipo === winnerName)!;
-    });
-    this.winners = [];
-  }
 
-
-  // FUNCIONES PARA BRACKET COMPONENT
-  Jugadores: string[] = [];
-  ganadoresRonda: string[] = [];
-  numeroRonda: number = 1;
-  partidos: number[] = [];
-  mensaje: string = '';
-
-  getParticipantes(): Observable<
-    {
-      nombreEquipo: string;
-      procedencia: string;
-      representante: string;
-      email: string;
-      telefono: string;
-    }[]
-  > {
-    return of(this.participantes);
-  }
-
-  setJugadores() {
-    this.Jugadores = this.participantes.map(p => p.nombreEquipo);
-  }
-
-  setPartidos() {
-    if (this.Jugadores.length <= 1) {
-      throw new Error('No hay suficientes jugadores registrados para un partido');
-    } else if (this.Jugadores.length === 2) {
-      this.resetJugadores();
-      this.partidos.pop();
-    } else if (this.Jugadores.length === 4) {
-      this.partidos.pop();
-      this.numeroRonda++;
-    } else {
-      this.partidos.pop();
-      this.partidos.pop();
-      this.numeroRonda++;
-    }
-  }
-
-  onSubmit() {
-    this.mensaje = '';
-
-    // validate
-    let modifiedWinners = this.ganadoresRonda.filter((winner) => winner !== '');
-    if (modifiedWinners.length != this.partidos.length) {
-      this.mensaje = 'Por favor, selecciona un ganador para cada partido';
-      throw new Error('Por favor, selecciona un ganador para cada partido');
-    }
-
-    this.setPartidos();
-
-    // keep track of winners
-    this.Jugadores = [];
-    for (let index = 0; index < this.ganadoresRonda.length; index++) {
-      this.Jugadores[index] = this.ganadoresRonda[index];
-    }
-
-    // declare winner and/or reset for another round
-    if (this.ganadoresRonda.length === 1) {
-      this.mensaje = 'Ganador: ' + this.ganadoresRonda[0];
-      this.ganadoresRonda = [];
-    } else {
-      this.ganadoresRonda = [];
-    }
-  }
-
-  addPartidos() {
-    for (let index = 1; index < this.Jugadores.length / 2 + 1; index++)
-      this.partidos.push(index);
-  }
-
-  trackByFn(index: any, item: any) {
-    return index;
-  }
-
-  resetJugadores() {
-    this.participantes = [];
-    this.Jugadores = [];
-    this.ganadoresRonda = [];
-    this.numeroRonda = 1;
-    this.partidos = [];
-    this.mensaje = '';
-  }
   
 
 }

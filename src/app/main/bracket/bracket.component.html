@@ -1,4 +1,8 @@
 <h1>Tournament Bracket</h1>
+<br>
+<button *ngIf="sortearDeshabilitado" (click)="barajar()">Barajar Equipos</button>
+<br>
+<br>
 <!--<div class="bracket">
   <section aria-labelledby="round-1">
     <h2 id="round-1">Round 1</h2>
@@ -143,61 +147,58 @@
     <ol>
       <li>
         <div class="item">
-          <a href="#">Player 1</a><hr>
-          <a href="#">Player 2</a>
+          <a href="#">{{ partidos[0]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[1]?.nombreEquipo }}</a>
         </div>
       </li>
       <li>
         <div class="item">
-          <a href="#">Player 3</a><hr>
-          <a href="#">Player 4</a>
-          
+          <a href="#">{{ partidos[2]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[3]?.nombreEquipo }}</a>
         </div>
       </li>
       <li>
         <div class="item">
-          <a href="#">Player 5</a><hr>
-          <a href="#">Player 6</a>
-          
+          <a href="#">{{ partidos[4]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[5]?.nombreEquipo }}</a>
         </div>
       </li>
       <li>
         <div class="item">
-          <a href="#">Player 7</a><hr>
-          <a href="#">Player 8</a>
-          
+          <a href="#">{{ partidos[6]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[7]?.nombreEquipo }}</a>
         </div>
       </li>
       <li>
         <div class="item">
-          <a href="#">Player 9</a><hr>
-          <a href="#">Player 10</a>
-          
+          <a href="#">{{ partidos[8]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[9]?.nombreEquipo }}</a>
         </div>
       </li>
       <li>
         <div class="item">
-          <a href="#">Player 11</a><hr>
-          <a href="#">Player 12</a>
-          
+          <a href="#">{{ partidos[10]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[11]?.nombreEquipo }}</a>
         </div>
       </li>
       <li>
         <div class="item">
-          <a href="#">Player 13</a><hr>
-          <a href="#">Player 14</a>
-          
+          <a href="#">{{ partidos[12]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[13]?.nombreEquipo }}</a>
         </div>
       </li>
       <li>
         <div class="item">
-          <a href="#">Player 15</a><hr>
-          <a href="#">Player 16</a>
+          <a href="#">{{ partidos[14]?.nombreEquipo }}</a><hr>
+          <a href="#">{{ partidos[15]?.nombreEquipo }}</a>
           
         </div>
       </li>
     </ol>
   </section>
+
+  -------
+
   <section aria-labelledby="round-2">
     <h2 id="round-2">Round 2</h2>
       <ol>
@@ -231,6 +232,9 @@
         </li>
       </ol>
   </section>
+
+  --------
+  
   <section aria-labelledby="round-3">
     <h2 id="round-3">Round 3</h2>
     <ol>

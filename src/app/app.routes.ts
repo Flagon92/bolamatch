@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { ViewComponent } from './view/view.component';
 import { RegistroComponent } from './main/registro/registro.component';
 import { ApuestasComponent } from './main/apuestas/apuestas.component';
-import { ColaboracionesComponent } from './main/colaboraciones/colaboraciones.component';
 import { VotacionesComponent } from './main/votaciones/votaciones.component';
 import { ContenedorComponent } from './contenedor/contenedor.component';
 import { EquiposComponent } from './main/equipos/equipos.component';
@@ -44,10 +43,6 @@ export const routes: Routes = [
     {
         path: 'apuestas',
         component: ApuestasComponent
-    },
-    {
-        path: 'colaboraciones',
-        component: ColaboracionesComponent
     },
     {
         path: 'votaciones',

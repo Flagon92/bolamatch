@@ -12,11 +12,19 @@ import { SharedService } from '../../shared.service';
 })
 export class BracketComponent {
 
-  constructor(public sharedService: SharedService) { }
+  partidos: { nombreEquipo: string }[] = [];
+
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
-    this.sharedService.setJugadores();
-    this.sharedService.addPartidos();
+    
   }
 
+  barajar(): void {
+    this.sharedService.randomizarEquipos();
+    this.partidos = this.sharedService.resultadosArreglo;
+    this.sortearDeshabilitado = false;
+  }
+
+  sortearDeshabilitado: boolean = true;
 }

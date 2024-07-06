@@ -22,7 +22,8 @@ export class BracketComponent {
 
   sortearDeshabilitado: boolean = true;
   ganadoresRonda1: { nombreEquipo: string }[] = [];
-i: any;
+
+  i: any;
 
   constructor(private sharedService: SharedService) {}
 
@@ -46,6 +47,7 @@ i: any;
     if (index >= 0 && index < this.partidos.length) {
       var ganador = { ...this.partidos[index] }; // Copy object properties
       this.ganadoresRonda1.push(ganador);
+      console.log(this.ganadoresRonda1);
     } else {
       console.error(`Invalid index ${index}. Array size is ${this.partidos.length}`);
     }

@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { ViewComponent } from './view/view.component';
 import { RegistroComponent } from './main/registro/registro.component';
-import { ApuestasComponent } from './main/apuestas/apuestas.component';
-import { VotacionesComponent } from './main/votaciones/votaciones.component';
 import { ContenedorComponent } from './contenedor/contenedor.component';
 import { EquiposComponent } from './main/equipos/equipos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -39,14 +37,6 @@ export const routes: Routes = [
     {
         path: 'registro',
         component: RegistroComponent
-    },
-    {
-        path: 'apuestas',
-        component: ApuestasComponent
-    },
-    {
-        path: 'votaciones',
-        component: VotacionesComponent
     },
     {
         path: '',

@@ -43,9 +43,9 @@ export class BracketComponent {
   }
 
   agregarGanador(index: number): void {
-    // Validate index within partidos array bounds
+    // Validar indice
     if (index >= 0 && index < this.partidos.length) {
-      var ganador = { ...this.partidos[index] }; // Copy object properties
+      var ganador = { ...this.partidos[index] }; // Copiar objeto
       this.ganadoresRonda1.push(ganador);
       console.log(this.ganadoresRonda1);
     } else {

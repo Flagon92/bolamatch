@@ -43,7 +43,7 @@ export class SharedService {
   };
   /////////////////////////////////////////////////////
 
-  errorMessage: string = '';
+  // errorMessage: string = '';
 
 
   //FUNCION DEL BOTON PARA REGISTRAR UN PARTICIPANTE, VALIDAR CAMPOS VACÍOS Y ENVIAR EL OBJETO A LISTA DE PARTICIPANTES
@@ -123,17 +123,8 @@ export class SharedService {
     this.duelosArreglo = [...this.participantes];
     this.duelosArreglo = this.shuffle(this.duelosArreglo);
     this.resultadosArreglo = [...this.duelosArreglo];
-    this.names = this.resultadosArreglo.map(equipo => equipo.nombreEquipo);
-    this.winnersTotal = [this.names]
     
   }
-
-  //hecho() { 
-    //this.sortearDeshabilitado = true;//PARA FINALIZAR EL SORTEO Y NO SE PUEDA SORTEAR MÁS
-    //this.resultadosArreglo = [...this.duelosArreglo];//COPIO TODO DE DUELOS ARREGLO A RESULTADOS ARREGLO
-    //this.names = this.resultadosArreglo.map(equipo => equipo.nombreEquipo);// ALMACENO CADA NOMBRE EN UN NUEVO ARRAY LLAMADO NAMES
-    //this.winnersTotal = [this.names]//ESTO AUN NO LO USAMOS, PARA PROXIMOS AVANCES
-  //}
 
   private shuffle(array: {
     nombreEquipo: string,
@@ -159,10 +150,7 @@ export class SharedService {
 
   /////////////////////////////////////////////////////
 
-
-  //FUNCION PARA SACAR UN GANADOR ENTRE DOS EQUIPOS
-
-  resultadosArreglo: { // ACÁ TENEMOS UN ARRAY PARA TRABAJAR LOS PUNTAJES, TOTALMENTE INDEPENDIETE QUE ALMACENA EL ARRAY DE DUELOS
+  resultadosArreglo: { 
     nombreEquipo: string,
     procedencia: string,
     representante: string,
@@ -171,61 +159,38 @@ export class SharedService {
   }[] = [];
 
 
-  duelosIndependientes: {//ACÁ TENEMOS UN ARRAY EN EL QUE CADA ELEMENTO ESTAN LOS DOS PUNTAJES
-    score1: number;
-    score2: number;
-  }[] = [];
 
-  instanciaDuelos() {
-    if (this.duelosIndependientes.length === 0) {
+  //ARRAYS POR DEFAULT PARA NO ESTAR ESCRIBIENDO A CADA RATO----------------------------------
 
-      for (let i = 0; i < this.duelosArreglo.length; i += 2) {
-        this.duelosIndependientes.push(this.nuevoDuelo);//PONEMOS LOS DOS PUNTAJES, O SEA EL OBJETO EN DUELOS INDEPENDIENTES
+  equiposDefaultUno = [
+    { nombreEquipo: 'A', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'B', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'C', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'D', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'E', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'F', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'G', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'H', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'I', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'J', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'K', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'L', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'M', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'N', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Ñ', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'O', procedencia: '000', representante: '000', email: '000', telefono: '000' }
+  ];
 
-        this.nuevoDuelo = {
-          score1: 0,
-          score2: 0
-        };  
-      }
-    }
-  }
-
-  nuevoDuelo = {
-    score1: 0,//EL PUNTAJE QUE SE LE DA AL PRIMER EQUIPO
-    score2: 0//EL PUNTAJE QUE SE LE DA AL SEGUNDO EQUIPO
-  };
-
-  names: string[] = [];//ARRAY PARA ALMACENAR CADA NOMBRE DE LOS EQUIPOS
-
-
-  borrarPuntajes() {
-    for (let duelo of this.duelosIndependientes) {
-      duelo.score1 = 0;
-      duelo.score2 = 0;
-    }
-    this.winners = [];
-  }
-
-  winners: string[] = [];
-
-  winnersTotal: string[][] = [];//ESTO AUN NO LO USAMOS, ES PARA PROXIMOS AVANCES
-
-  winner() {
-    if (this.winners.length === 0) {
-
-      for (let i = 0; i < this.duelosIndependientes.length; i++) {
-
-        if (this.duelosIndependientes[i].score1 > this.duelosIndependientes[i].score2) {
-          this.winners.push(this.names[i * 2]);
-        } else if (this.duelosIndependientes[i].score1 < this.duelosIndependientes[i].score2) {
-          this.winners.push(this.names[i * 2 + 1]);
-        }
-      }
-      this.winnersTotal.push(this.winners);
-      this.names = this.winners;
-    }
-  }
-
+  equiposDefaultDos = [
+    { nombreEquipo: 'A', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'B', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'C', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'D', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'E', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'F', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'G', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'H', procedencia: '000', representante: '000', email: '000', telefono: '000' }
+  ];
 
   
 

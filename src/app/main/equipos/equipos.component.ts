@@ -13,4 +13,12 @@ export class EquiposComponent {
 
   constructor(public sharedService: SharedService){}
 
+  cargarEquiposDefaultUno(): void {
+    this.sharedService.participantes = [...this.sharedService.equiposDefaultUno];
+  }
+
+  cargarEquiposDefaultDos(): void {
+    this.sharedService.participantes = [...this.sharedService.equiposDefaultDos];
+  }
+
 }

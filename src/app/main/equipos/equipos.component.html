@@ -15,6 +15,9 @@
       </div>
   </div>
   </div>
+  <button class="btn btn-primary" (click)="cargarEquiposDefaultUno()">Cargar 16 Equipos Default</button>
+  <br>
+  <button class="btn btn-primary" (click)="cargarEquiposDefaultDos()">Cargar 8 Equipos Default</button>
   <div class="text-center pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length == 0">
     <h2>TIENES {{sharedService.participantes.length}} EQUIPOS REGISTRADOS</h2>
     <img class="mbappe-like" src="../../../assets/mbappe-like.png" alt="">

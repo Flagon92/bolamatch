@@ -1,4 +1,4 @@
-<button class="btn btn-primary" *ngIf="sortearDeshabilitado" (click)="barajar()">Barajar Equipos</button>
+<button class="btn btn-primary" *ngIf="sharedService.sortearDeshabilitado" (click)="barajar()">Barajar Equipos</button>
 <br>
 
 <div *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)" class="bracket br-2">

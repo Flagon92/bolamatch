@@ -16,6 +16,10 @@ export class BracketComponent {
 
   constructor(public sharedService: SharedService) { }
 
+  currentAdversary1: any;
+  currentAdversary2: any;
+  currentDuelIndex: number = 0;
+
   sortearDeshabilitado: boolean = true;
 
   ngOnInit() {
@@ -89,8 +93,18 @@ export class BracketComponent {
     this.sharedService.agregarGanadorRonda4(index, duelIndex);
   }
 
-  onItemClick(event: MouseEvent) {
-    this.sharedService.openMenu(event);
+  openModal(adversary1: any, adversary2: any, duelIndex: number): void {
+    this.currentAdversary1 = adversary1;
+    this.currentAdversary2 = adversary2;
+    this.currentDuelIndex = duelIndex;
+  }
+
+  selectWinner(winner: any, duelIndex: number): void {
+    if (this.currentDuelIndex === duelIndex) {
+      this.sharedService.agregarGanadorRonda1(winner, duelIndex); // Adjust this method based on the current round
+    }
+    // Close the modal manually if necessary
+    (document.querySelector('#exampleModal') as any)?.modal('hide');
   }
 
 }

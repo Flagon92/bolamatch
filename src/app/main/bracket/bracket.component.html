@@ -15,14 +15,14 @@
     <ol>
       <li *ngFor="let i of getDuelIndexes(partidos.length); let duelIndex = index">
         <div class="item p-1">
-          <a href="#">{{ partidos[i]?.nombreEquipo }}</a>
+          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ partidos[i]?.nombreEquipo }}</a>
           <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
             (click)="agregarGanadorRonda1(i, duelIndex)">Ganador</button>
         </div>
         <hr>
         <hr>
         <div class="item p-1">
-          <a href="#">{{ partidos[i + 1]?.nombreEquipo }}</a>
+          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ partidos[i + 1]?.nombreEquipo }}</a>
           <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
             (click)="agregarGanadorRonda1(i + 1, duelIndex)">Ganador</button>
         </div>
@@ -165,11 +165,19 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar Resultado</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="row">
+          <div class="col">{{ currentAdversary1?.nombreEquipo }}</div>
+          <button class="btn btn-warning" (click)="selectWinner(currentAdversary1, currentDuelIndex)">Ganador</button>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col">{{ currentAdversary2?.nombreEquipo }}</div>
+          <button class="btn btn-warning" (click)="selectWinner(currentAdversary2, currentDuelIndex)">Ganador</button>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

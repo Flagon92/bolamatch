@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable, ViewChild } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { PopupMenuComponent } from './main/popup-menu/popup-menu.component';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +10,8 @@ import { Observable, of } from 'rxjs';
 export class SharedService {
 
   constructor() { }
-
+ 
+ 
 
   //LISTA DE PARTICIPANTES----------------------
   participantes: {
@@ -327,6 +331,17 @@ export class SharedService {
 
   i: any; 
 
+  private menu: PopupMenuComponent | null = null;
+
+  setMenu(menu: PopupMenuComponent) {
+    this.menu = menu;
+  }
+
+  openMenu(event: MouseEvent) {
+    if (this.menu) {
+      this.menu.open(event);
+    }
+  }
 
 }
 

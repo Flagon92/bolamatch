@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from '../../shared.service';
+import { PopupMenuComponent } from '../popup-menu/popup-menu.component';
 
 @Component({
   selector: 'app-bracket',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './bracket.component.html',
+templateUrl: './bracket.component.html',
   styleUrl: './bracket.component.css'
 })
 
@@ -87,4 +88,9 @@ export class BracketComponent {
   agregarGanadorRonda4(index: number, duelIndex: number): void {
     this.sharedService.agregarGanadorRonda4(index, duelIndex);
   }
+
+  onItemClick(event: MouseEvent) {
+    this.sharedService.openMenu(event);
+  }
+
 }

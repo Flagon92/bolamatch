@@ -26,6 +26,7 @@ import { SharedService } from './shared.service';
 })
 
 export class AppComponent {
+  title = 'app';
 
   constructor(public sharedService: SharedService){}
 

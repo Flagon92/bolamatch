@@ -102,7 +102,7 @@ export class BracketComponent {
     }
   }
 
-  selectWinner(index: number, duelIndex: number): void {
+  selectWinner1(index: number, duelIndex: number): void {
     console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
     if (this.currentDuelIndex === duelIndex) {
         this.sharedService.agregarGanadorRonda1(index, duelIndex);

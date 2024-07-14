@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from '../../shared.service';
-import { PopupMenuComponent } from '../popup-menu/popup-menu.component';
 
 @Component({
   selector: 'app-bracket',
@@ -97,14 +96,22 @@ export class BracketComponent {
     this.currentAdversary1 = adversary1;
     this.currentAdversary2 = adversary2;
     this.currentDuelIndex = duelIndex;
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+      (modalElement as any).modal('show');
+    }
   }
 
-  selectWinner(winner: any, duelIndex: number): void {
+  selectWinner(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
     if (this.currentDuelIndex === duelIndex) {
-      this.sharedService.agregarGanadorRonda1(winner, duelIndex); // Adjust this method based on the current round
+        this.sharedService.agregarGanadorRonda1(index, duelIndex);
     }
     // Close the modal manually if necessary
-    (document.querySelector('#exampleModal') as any)?.modal('hide');
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+        (modalElement as any).modal('hide');
+    }
   }
 
 }

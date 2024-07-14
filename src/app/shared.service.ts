@@ -1,6 +1,5 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { PopupMenuComponent } from './main/popup-menu/popup-menu.component';
 
 
 
@@ -326,20 +325,6 @@ export class SharedService {
       }
     } else {
       console.error(`Índice inválido ${index}. El tamaño del array es ${this.ganadoresRonda3.length}`);
-    }
-  }
-
-  i: any; 
-
-  private menu: PopupMenuComponent | null = null;
-
-  setMenu(menu: PopupMenuComponent) {
-    this.menu = menu;
-  }
-
-  openMenu(event: MouseEvent) {
-    if (this.menu) {
-      this.menu.open(event);
     }
   }
 

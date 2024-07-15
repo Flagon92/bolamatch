@@ -21,10 +21,12 @@ export class BracketComponent {
 
   sortearDeshabilitado: boolean = true;
 
+  
+
   ngOnInit() {
     this.sharedService.inicializarDuelos();
-
   }
+
 
   barajar(): void {
     this.sharedService.barajar();

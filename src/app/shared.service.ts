@@ -202,7 +202,7 @@ export class SharedService {
     procedencia: string,
     representante: string,
     email: string,
-    telefono: string
+    telefono: string,
   }[] = [];
 
   sortearDeshabilitado: boolean = true;

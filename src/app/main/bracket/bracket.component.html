@@ -14,14 +14,20 @@
     </h2>
     <ol>
       <li *ngFor="let i of getDuelIndexes(partidos.length); let duelIndex = index">
-        <div class="item p-1">
-          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ partidos[i]?.nombreEquipo }}</a>
-        </div>
-        <hr>
-        <hr>
-        <div class="item p-1">
-          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ partidos[i + 1]?.nombreEquipo }}</a>
-        </div>
+        <fieldset>
+          <div class="item p-1">
+            <label>{{ partidos[i]?.nombreEquipo }}</label>
+          </div>
+          <hr>
+          <hr>
+          <div class="item p-1">
+            <label>{{ partidos[i + 1]?.nombreEquipo }}</label>
+          </div>
+          <div>
+            <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
+            (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">Resolver</button>
+          </div>
+        </fieldset>
       </li>
     </ol>
   </section>

@@ -28,13 +28,6 @@ export class BracketComponent {
     this.sharedService.inicializarDuelos();
   }
 
-
-  barajar(): void {
-    this.sharedService.barajar();
-
-    this.sortearDeshabilitado = false;
-  }
-
   get partidos() {
     return this.sharedService.partidos;
   }
@@ -105,10 +98,47 @@ export class BracketComponent {
     }
   }
 
+
   selectWinner1(index: number, duelIndex: number): void {
     console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
     if (this.currentDuelIndex === duelIndex) {
         this.sharedService.agregarGanadorRonda1(index, duelIndex);
+    }
+    // Cerrar el modal.
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+        (modalElement as any).modal('hide');
+    }
+  }
+
+  selectWinner2(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
+    if (this.currentDuelIndex === duelIndex) {
+        this.sharedService.agregarGanadorRonda2(index, duelIndex);
+    }
+    // Close the modal manually if necessary
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+        (modalElement as any).modal('hide');
+    }
+  }
+
+  selectWinner3(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
+    if (this.currentDuelIndex === duelIndex) {
+        this.sharedService.agregarGanadorRonda3(index, duelIndex);
+    }
+    // Close the modal manually if necessary
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+        (modalElement as any).modal('hide');
+    }
+  }
+
+  selectWinner4(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
+    if (this.currentDuelIndex === duelIndex) {
+        this.sharedService.agregarGanadorRonda4(index, duelIndex);
     }
     // Close the modal manually if necessary
     const modalElement = document.querySelector('#exampleModal');

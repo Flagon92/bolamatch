@@ -33,7 +33,63 @@
   </section>
 
 
-  -------
+
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+      <div class="cuadro">
+        <div class="bracket-top"></div>
+        <div class="bracket1"></div>
+        <div class="bracket-top"></div>
+        <div class="linear"></div>
+        <div class="bracket-top1"></div>
+    </div>
+    <div class="cuadro">
+      <div class="bracket-top"></div>
+      <div class="bracket1"></div>
+      <div class="bracket-top"></div>
+      <div class="linear"></div>
+      <div class="bracket-top1"></div>
+  </div><div class="cuadro">
+    <div class="bracket-top"></div>
+    <div class="bracket1"></div>
+    <div class="bracket-top"></div>
+    <div class="linear"></div>
+    <div class="bracket-top1"></div>
+</div><div class="cuadro">
+  <div class="bracket-top"></div>
+  <div class="bracket1"></div>
+  <div class="bracket-top"></div>
+  <div class="linear"></div>
+  <div class="bracket-top1"></div>
+</div>
+    </div><div *ngIf="partidos.length === 8" >
+      <div class="cuadro">
+        <div class="bracket-top"></div>
+        <div class="bracket1"></div>
+        <div class="bracket-top"></div>
+        <div class="linear"></div>
+        <div class="bracket-top1"></div>
+    </div>
+    <div class="cuadro">
+      <div class="bracket-top"></div>
+      <div class="bracket1"></div>
+      <div class="bracket-top"></div>
+      <div class="linear"></div>
+      <div class="bracket-top1"></div>
+  </div>
+  </div>
+  <div *ngIf="partidos.length === 4" >
+    <div class="cuadro">
+      <div class="bracket-top"></div>
+      <div class="bracket1"></div>
+      <div class="bracket-top"></div>
+      <div class="linear"></div>
+      <div class="bracket-top1"></div>
+  </div>
+  </div>
+  </section>
+
+
 
   <section *ngIf="ganadoresRonda1.length > 0" aria-labelledby="round-2">
     <h2 *ngIf="ganadoresRonda1.length === 8">
@@ -64,7 +120,43 @@
   </section>
 
 
-  --------
+  
+
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+      <div class="cuadro">
+        <div class="bracket-top"></div>
+        <div class="bracket1"></div>
+        <div class="bracket-top"></div>
+        <div class="linear"></div>
+        <div class="bracket-top1"></div>
+    </div>
+    <div class="cuadro">
+      <div class="bracket-top"></div>
+      <div class="bracket1"></div>
+      <div class="bracket-top"></div>
+      <div class="linear"></div>
+      <div class="bracket-top1"></div>
+    </div>
+    </div>
+    <div *ngIf="partidos.length === 8" >
+      <div class="cuadro">
+        <div class="bracket-top"></div>
+        <div class="bracket1"></div>
+        <div class="bracket-top"></div>
+        <div class="linear"></div>
+        <div class="bracket-top1"></div>
+    </div>
+    </div>
+    <div *ngIf="partidos.length === 4" >
+      <div class="cuadro">
+        <div class="bracket1"></div>
+        <div class="bracket-top2"></div>
+      </div>
+    </div>
+  </section>
+
+
 
   <section aria-labelledby="round-3" *ngIf="ganadoresRonda2.length > 0">
     <h2 *ngIf="ganadoresRonda2.length === 4">
@@ -104,7 +196,29 @@
     </ol>
   </section>
 
-  -------
+ 
+
+
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+      <div class="cuadro">
+        <div class="bracket-top"></div>
+        <div class="bracket1"></div>
+        <div class="bracket-top"></div>
+        <div class="linear"></div>
+        <div class="bracket-top1"></div>
+    </div>
+    </div>
+    <div *ngIf="partidos.length === 8" >
+      <div class="cuadro">
+        <div class="bracket1"></div>
+        <div class="bracket-top2"></div>
+      </div>
+    </div>
+  </section>
+
+
+
 
   <section aria-labelledby="round-4" *ngIf="ganadoresRonda3.length > 0 && ganadoresRonda2.length > 1">
     <h2 *ngIf="ganadoresRonda3.length === 1" class="winner">
@@ -141,7 +255,14 @@
     </ol>
   </section>
 
-  -------
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+      <div class="cuadro">
+        <div class="bracket1"></div>
+        <div class="bracket-top2"></div>
+      </div>
+    </div>
+  </section>
 
   <section aria-labelledby="winner" *ngIf="ganadoresRonda4.length > 0 && ganadoresRonda3.length > 1">
     <h2 *ngIf="ganadoresRonda4.length === 1" class="winner">

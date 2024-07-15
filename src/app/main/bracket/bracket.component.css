@@ -14,7 +14,7 @@ button{
 }
 
 section {
-  max-width: 160px; 
+  max-width: 200px; 
   width: 25%; 
   max-height: 950px;
   margin: 0;
@@ -33,7 +33,6 @@ li {
   margin-bottom: 15px;
   padding: 5px;
   align-items: center; 
-  width: 100%;
 }
 
 .item {
@@ -42,8 +41,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  width: 150px; 
+  width: 200px; 
   max-width: 90%; 
 }
 
@@ -81,6 +79,19 @@ h2.winner {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+img{
+  width: 160px;
+  margin: 10px;
+  padding: 35px;
+  border-radius: 10%;
+  border: 1px solid #dcdcdc;
+}
+
+.btn-modal{
+  padding: 5px;
+  width: 160px;
+}
+
 .cuadro{
   position: relative;
   align-items: center;
@@ -88,35 +99,10 @@ h2.winner {
   margin-bottom: 75px;
 }
 
-.bracket-top{
-  position: relative;
-  background-color: var(--color-bracket);
-  height: 5px;
-  width: 50%;
-}
-
 .bracket1{
   position: relative;
   height: 100px;
   width: max-content;
-}
-
-.linear{
-  position: absolute;
-  top: 0px;
-  left: 50%;
-  background-color: var(--color-bracket);
-  height: 100%;
-  width: 5px;
-}
-
-.bracket-top1{
-  position: absolute; 
-  bottom: 50%;
-  left: 50%;
-  background-color: var(--color-bracket);
-  height: 5px;
-  width: 50%;
 }
 
 .bracket-top2{

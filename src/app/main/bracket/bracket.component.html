@@ -22,11 +22,12 @@
           <hr>
           <div class="item p-1">
             <label>{{ partidos[i + 1]?.nombreEquipo }}</label>
+            <div>
+              <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
+              (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">Resolver</button>
+            </div>
           </div>
-          <div>
-            <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
-            (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">Resolver</button>
-          </div>
+          
         </fieldset>
       </li>
     </ol>
@@ -36,57 +37,23 @@
 
   <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
     <div *ngIf="partidos.length === 16" >
-      <div class="cuadro">
-        <div class="bracket-top"></div>
-        <div class="bracket1"></div>
-        <div class="bracket-top"></div>
-        <div class="linear"></div>
-        <div class="bracket-top1"></div>
-    </div>
-    <div class="cuadro">
-      <div class="bracket-top"></div>
-      <div class="bracket1"></div>
-      <div class="bracket-top"></div>
-      <div class="linear"></div>
-      <div class="bracket-top1"></div>
-  </div><div class="cuadro">
-    <div class="bracket-top"></div>
-    <div class="bracket1"></div>
-    <div class="bracket-top"></div>
-    <div class="linear"></div>
-    <div class="bracket-top1"></div>
-</div><div class="cuadro">
-  <div class="bracket-top"></div>
-  <div class="bracket1"></div>
-  <div class="bracket-top"></div>
-  <div class="linear"></div>
-  <div class="bracket-top1"></div>
-</div>
+
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+
     </div><div *ngIf="partidos.length === 8" >
-      <div class="cuadro">
-        <div class="bracket-top"></div>
-        <div class="bracket1"></div>
-        <div class="bracket-top"></div>
-        <div class="linear"></div>
-        <div class="bracket-top1"></div>
+      
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+
     </div>
-    <div class="cuadro">
-      <div class="bracket-top"></div>
-      <div class="bracket1"></div>
-      <div class="bracket-top"></div>
-      <div class="linear"></div>
-      <div class="bracket-top1"></div>
-  </div>
-  </div>
-  <div *ngIf="partidos.length === 4" >
-    <div class="cuadro">
-      <div class="bracket-top"></div>
-      <div class="bracket1"></div>
-      <div class="bracket-top"></div>
-      <div class="linear"></div>
-      <div class="bracket-top1"></div>
-  </div>
-  </div>
+    <div *ngIf="partidos.length === 4" >
+
+      <app-bracket-visual></app-bracket-visual>
+      
+    </div>
   </section>
 
 
@@ -124,29 +91,15 @@
 
   <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
     <div *ngIf="partidos.length === 16" >
-      <div class="cuadro">
-        <div class="bracket-top"></div>
-        <div class="bracket1"></div>
-        <div class="bracket-top"></div>
-        <div class="linear"></div>
-        <div class="bracket-top1"></div>
-    </div>
-    <div class="cuadro">
-      <div class="bracket-top"></div>
-      <div class="bracket1"></div>
-      <div class="bracket-top"></div>
-      <div class="linear"></div>
-      <div class="bracket-top1"></div>
-    </div>
+      
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+
     </div>
     <div *ngIf="partidos.length === 8" >
-      <div class="cuadro">
-        <div class="bracket-top"></div>
-        <div class="bracket1"></div>
-        <div class="bracket-top"></div>
-        <div class="linear"></div>
-        <div class="bracket-top1"></div>
-    </div>
+
+      <app-bracket-visual></app-bracket-visual>
+
     </div>
     <div *ngIf="partidos.length === 4" >
       <div class="cuadro">
@@ -201,13 +154,9 @@
 
   <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
     <div *ngIf="partidos.length === 16" >
-      <div class="cuadro">
-        <div class="bracket-top"></div>
-        <div class="bracket1"></div>
-        <div class="bracket-top"></div>
-        <div class="linear"></div>
-        <div class="bracket-top1"></div>
-    </div>
+
+      <app-bracket-visual></app-bracket-visual>
+      
     </div>
     <div *ngIf="partidos.length === 8" >
       <div class="cuadro">
@@ -281,20 +230,19 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar Resultado</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Partidos</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row">
+        <h2>Elige el Ganador</h2>
+        <div class="d-grid gap-2">
           <button (click)="selectWinner1(partidos.indexOf(currentAdversary1), currentDuelIndex)" class="btn btn-warning" data-bs-dismiss="modal">
             {{ currentAdversary1?.nombreEquipo }}
           </button>          
-        </div>
-        <hr>
-        <div class="row">
+
           <button (click)="selectWinner1(partidos.indexOf(currentAdversary2), currentDuelIndex)" class="btn btn-warning" data-bs-dismiss="modal">
             {{ currentAdversary2?.nombreEquipo }}
           </button>

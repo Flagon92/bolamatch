@@ -6,7 +6,7 @@
   align-items: center;
   overflow: visible;
   width: 100%;
-  margin: auto;
+  margin: 0;
 }
 
 button{
@@ -14,10 +14,10 @@ button{
 }
 
 section {
-  max-width: 250px; 
+  max-width: 160px; 
   width: 25%; 
   max-height: 950px;
-  align-content: center;
+  margin: 0;
 }
 
 ol {
@@ -31,6 +31,7 @@ li {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+  padding: 5px;
   align-items: center; 
   width: 100%;
 }
@@ -85,7 +86,6 @@ h2.winner {
   align-items: center;
   margin-top: 100px;
   margin-bottom: 75px;
-  
 }
 
 .bracket-top{

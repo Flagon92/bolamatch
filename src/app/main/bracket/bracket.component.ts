@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from '../../shared.service';
+import { BracketVisualComponent } from "../../components/bracket-visual/bracket-visual.component";
 
 @Component({
   selector: 'app-bracket',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, BracketVisualComponent],
 templateUrl: './bracket.component.html',
   styleUrl: './bracket.component.css'
 })

@@ -132,4 +132,13 @@ export class BracketComponent {
     (document.querySelector('#exampleModal') as any)?.modal('hide');
   }
 
+  selectWinner4(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
+    if (this.currentDuelIndex === duelIndex) {
+        this.sharedService.agregarGanadorRonda4(index, duelIndex);
+    }
+    // Close the modal manually if necessary
+    (document.querySelector('#exampleModal') as any)?.modal('hide');
+  }
+
 }

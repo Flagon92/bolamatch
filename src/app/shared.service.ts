@@ -649,6 +649,16 @@ export class SharedService {
   }
   
   //.------------------------------
+
+  // PARA RESETEAR LA PÁGINA CUANDO SE VUELVE A LA VISTA PRINCIPAL
+
+  resetTorneo() {
+    this.equiposGrupos = [];
+    this.clasificados = [];
+    this.cruces = [];
+    this.participantes = [];
+}
+
 }
 
 

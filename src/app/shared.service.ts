@@ -657,6 +657,7 @@ export class SharedService {
     this.clasificados = [];
     this.cruces = [];
     this.participantes = [];
+    this.setDisableRegistro(false);
 }
 
 // Boton para deshabilitar Registro

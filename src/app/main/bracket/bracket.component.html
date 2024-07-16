@@ -1,7 +1,29 @@
-<button class="btn btn-primary" *ngIf="sharedService.sortearDeshabilitado" (click)="barajar()">Barajar Equipos</button>
-<br>
+<button class="btn btn-primary"
+  [hidden]="sharedService.participantes.length >= 32 || sharedService.participantes.length == 0"
+  *ngIf="sharedService.sortearDeshabilitado" (click)="barajar()">BARAJAR EQUIPOS</button>
+<!-- Nuevo botón para copiar cruces a clasificados -->
+<button class="btn btn-primary"
+  [hidden]="sharedService.participantes.length <= 16 || sharedService.participantes.length == 0" [disabled]="sharedService.clasificados.length != 16"
+  (click)="sharedService.ordenarCruces()">MOSTRAR DUELOS</button>
 
-<div *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)" class="bracket br-2">
+<div>
+  <h2 class="no-registred pt-5 pb-5 mt-5"
+    [hidden]="participantesNecesarios(sharedService.participantes.length)">
+    PARA MOSTRAR
+    EL BRACKET LA CANTIDAD DE PARTICIPANTES PUEDEN SER 4, 8 ó 16.</h2>
+</div>
+
+<div>
+  <h2 class="no-registred pt-5 pb-5 mt-5"
+    [hidden]="(sharedService.participantes.length <= 16 || sharedService.participantes.length == 0) || sharedService.clasificados.length == 16 ">
+    PRIMERO DEBES ELEGIR
+    A LOS
+    GANADORES EN LA FASE DE GRUPOS</h2>
+</div>
+
+
+<div *ngIf="(partidos.length > 2 && participantesNecesarios(partidos.length)) && partidos.length <= 16"
+  class="bracket br-2">
   <section aria-labelledby="round-1">
     <h2 *ngIf="partidos.length === 16">
       OCTAVOS
@@ -15,14 +37,16 @@
     <ol>
       <li *ngFor="let i of getDuelIndexes(partidos.length); let duelIndex = index">
         <div class="item p-1">
-          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ partidos[i]?.nombreEquipo }}</a>
+          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">{{ partidos[i]?.nombreEquipo }}</a>
           <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
             (click)="agregarGanadorRonda1(i, duelIndex)">Ganador</button>
         </div>
         <hr>
         <hr>
         <div class="item p-1">
-          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ partidos[i + 1]?.nombreEquipo }}</a>
+          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">{{ partidos[i + 1]?.nombreEquipo }}</a>
           <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
             (click)="agregarGanadorRonda1(i + 1, duelIndex)">Ganador</button>
         </div>
@@ -156,33 +180,33 @@
   </section>
 
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar Resultado</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col">{{ currentAdversary1?.nombreEquipo }}</div>
-          <button class="btn btn-warning" (click)="selectWinner(currentAdversary1, currentDuelIndex)">Ganador</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar Resultado</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <hr>
-        <div class="row">
-          <div class="col">{{ currentAdversary2?.nombreEquipo }}</div>
-          <button class="btn btn-warning" (click)="selectWinner(currentAdversary2, currentDuelIndex)">Ganador</button>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">{{ currentAdversary1?.nombreEquipo }}</div>
+            <button class="btn btn-warning" (click)="selectWinner(currentAdversary1, currentDuelIndex)">Ganador</button>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col">{{ currentAdversary2?.nombreEquipo }}</div>
+            <button class="btn btn-warning" (click)="selectWinner(currentAdversary2, currentDuelIndex)">Ganador</button>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

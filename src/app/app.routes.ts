@@ -5,6 +5,7 @@ import { ContenedorComponent } from './contenedor/contenedor.component';
 import { EquiposComponent } from './main/equipos/equipos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BracketComponent } from './main/bracket/bracket.component';
+import { GruposComponent } from './main/grupos/grupos.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
             {
                 path: 'bracket',
                 component: BracketComponent
+            },
+            {
+                path: 'grupos',
+                component: GruposComponent
             }
         ]
     },

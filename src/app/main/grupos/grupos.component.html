@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between">
+  <button class="btn btn-primary" [disabled]="sharedService.participantes.length < 32"
+    *ngIf="sharedService.sortearGruposDeshabilitado" (click)="barajarGrupos()">Barajar
+    Grupos</button>
+  <button class="btn btn-success" *ngIf="sharedService.sortearGruposConfirmado"
+    (click)="confirmarSorteoGrupos()">Confirmar Sorteo</button>
+</div>
+
+<div [ngClass]="{'disabled': sharedService.isDivDisabled}" *ngIf="sharedService.equiposGrupos.length" class="container">
+  <div class="row">
+    <div class="col-md-6 col-lg-3 group-table"
+      *ngFor="let grupo of sharedService.equiposGrupos; let grupoIndex = index">
+      <div class="group-header">Grupo {{grupoIndex + 1}}</div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <tr *ngFor="let equipo of grupo"
+              [ngClass]="{'table-success': estaSeleccionado(equipo, grupoIndex), 'table-danger': !estaSeleccionado(equipo, grupoIndex) && yaSeleccionados(grupoIndex)}"
+              (click)="seleccionarEquipo(equipo, grupoIndex)">
+              <td>{{equipo.nombreEquipo}} <span *ngIf="obtenerPosicion(equipo, grupoIndex)">({{obtenerPosicion(equipo,
+                  grupoIndex)}})</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="centered-button">
+  <button [ngClass]="{'disabled': sharedService.isDivDisabled}" [hidden]="sharedService.clasificados.length < 16"
+    class="btn btn-success" (click)="toggleDiv()">Listo
+  </button>
+</div>
+
+
+<div>
+  <h2 class="no-registred pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length >= 32">DEBEN ESTAR REGISTRADOS 32
+    PARTICIPANTES PARA MOSTRAR UNA FASE DE GRUPOS</h2>
+</div>

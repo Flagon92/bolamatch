@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ViewComponent } from './view/view.component';
 import { SharedService } from './shared.service';
+import { GruposComponent } from './main/grupos/grupos.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { SharedService } from './shared.service';
     RegistroComponent, 
     EquiposComponent,
     FooterComponent,
-    ViewComponent],
+    ViewComponent,
+    GruposComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html'
 })

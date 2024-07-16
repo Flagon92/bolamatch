@@ -21,4 +21,8 @@ export class EquiposComponent {
     this.sharedService.participantes = [...this.sharedService.equiposDefaultDos];
   }
 
+  cargarEquiposDefaultTres(): void {
+    this.sharedService.participantes = [...this.sharedService.equiposDefaultTres];
+  }
+
 }

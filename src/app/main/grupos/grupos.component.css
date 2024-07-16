@@ -1,0 +1,57 @@
+.group-table {
+    margin-bottom: 20px;
+}
+
+.group-header {
+    text-align: center;
+    background-color: #7964ff;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+
+.d-flex {
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+
+.no-registred {
+    text-align: center;
+    color: rgba(123, 121, 119, 0.836);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3rem;
+}
+
+.selected {
+    background-color: green;
+    color: white;
+}
+
+.not-selected {
+    background-color: red;
+    color: white;
+}
+
+.disabled {
+    pointer-events: none;
+    /* Evita que el div reciba clics */
+    opacity: 0.8;
+    /* Cambia la opacidad para dar apariencia deshabilitada */
+}
+
+.centered-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Ajusta según sea necesario */
+}

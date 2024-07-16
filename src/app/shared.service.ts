@@ -196,6 +196,42 @@ export class SharedService {
     { nombreEquipo: 'H', procedencia: '000', representante: '000', email: '000', telefono: '000' }
   ];
 
+  equiposDefaultTres = [
+    { nombreEquipo: 'Equipo 1', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 2', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 3', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 4', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 5', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 6', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 7', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 8', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 9', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 10', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 11', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 12', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 13', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 14', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 15', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 16', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 17', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 18', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 19', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 20', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 21', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 22', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 23', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 24', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 25', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 26', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 27', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 28', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 29', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 30', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 31', procedencia: '000', representante: '000', email: '000', telefono: '000' },
+    { nombreEquipo: 'Equipo 32', procedencia: '000', representante: '000', email: '000', telefono: '000' }
+];
+
+
   // INCORPORANDO EL TYPESCRIPT DE BRACKET AL SHARED SERVICE
 
   partidos: {
@@ -206,18 +242,26 @@ export class SharedService {
     telefono: string
   }[] = [];
 
+  
+
   sortearDeshabilitado: boolean = true;
 
   barajar(): void {
-    this.randomizarEquipos();
-    this.partidos = this.resultadosArreglo;
-    if (this.partidos.length >= 4) {
+    if (this.participantes.length >= 4 && this.participantes.length <= 16) {
+      this.randomizarEquipos();
+      this.partidos = this.resultadosArreglo;
       this.sortearDeshabilitado = false;
+      this.partidos = this.shuffle(this.partidos);
+    } else if(this.participantes.length == 32){
+      this.cruces = this.clasificados
+      this.partidos = this.clasificados;
     } else {
       // Minimo de equipos antes de permitir barajar
       console.error('Ingrese al menos cuatro equipos.');
     }
   }
+
+  
 
   participantesNecesarios(n: number): boolean {
     return (n & (n - 1)) === 0 && n > 0;
@@ -342,6 +386,104 @@ export class SharedService {
       this.menu.open(event);
     }
   }
+
+  //COSITAS PARA LA FASE DE GRUPOS========================================================================
+  
+  sortearGruposConfirmado: boolean = false;
+  sortearGruposDeshabilitado = true;
+
+  equiposGrupos: {
+    nombreEquipo: string,
+    procedencia: string,
+    representante: string,
+    email: string,
+    telefono: string
+  }[][] = [];
+
+  clasificados: {
+    nombreEquipo: string,
+    procedencia: string,
+    representante: string,
+    email: string,
+    telefono: string,
+    grupoIndex: number,
+    posicion: number
+  }[] = [];
+
+  barajarGrupos(): void {
+    this.randomizarEquipos();
+    // Verificar que tenemos suficientes equipos
+    if (this.resultadosArreglo.length === 32) {
+        this.equiposGrupos = [];
+        for (let i = 0; i < this.resultadosArreglo.length; i += 4) {
+            this.equiposGrupos.push(this.resultadosArreglo.slice(i, i + 4));
+        }
+    } else {
+        // Minimo de equipos antes de permitir barajar
+        console.error('Ingrese al menos 32 equipos.');
+    }
+}
+
+cruces: any[] = [];
+
+maxSeleccionadosPorGrupo = 2;
+
+
+
+seleccionarEquipo(equipo: any, grupoIndex: number) {
+  const equipoSeleccionado = { ...equipo, grupoIndex };
+
+  const index = this.clasificados.findIndex(e => e.nombreEquipo === equipo.nombreEquipo && e.grupoIndex === grupoIndex);
+  if (index !== -1) {
+    this.clasificados.splice(index, 1);
+  } else {
+    const equiposDelGrupo = this.clasificados.filter(e => e.grupoIndex === grupoIndex);
+    if (equiposDelGrupo.length < this.maxSeleccionadosPorGrupo) {
+      const posicion = equiposDelGrupo.length + 1;
+      this.clasificados.push({ ...equipoSeleccionado, posicion });
+    } else {
+      alert('Solo puedes seleccionar hasta dos equipos por grupo.');
+    }
+  }
+}
+
+estaSeleccionado(equipo: any, grupoIndex: number) {
+  return this.clasificados.some(e => e.nombreEquipo === equipo.nombreEquipo && e.grupoIndex === grupoIndex);
+}
+
+yaSeleccionados(grupoIndex: number) {
+  const equiposDelGrupo = this.clasificados.filter(e => e.grupoIndex === grupoIndex);
+  return equiposDelGrupo.length === this.maxSeleccionadosPorGrupo;
+}
+
+obtenerPosicion(equipo: any, grupoIndex: number) {
+  const equipoSeleccionado = this.clasificados.find(e => e.nombreEquipo === equipo.nombreEquipo && e.grupoIndex === grupoIndex);
+  return equipoSeleccionado ? equipoSeleccionado.posicion : '';
+}
+
+ordenarCruces() {
+  const clasificadosPorGrupo: any[][] = Array.from({ length: 8 }, () => []);
+  this.clasificados.forEach(equipo => {
+    clasificadosPorGrupo[equipo.grupoIndex].push(equipo);
+  });
+
+  this.cruces = [];
+  for (let i = 0; i < 8; i += 2) {
+    const grupoA = clasificadosPorGrupo[i];
+    const grupoB = clasificadosPorGrupo[i + 1];
+    this.cruces.push([grupoA.find(e => e.posicion === 1), grupoB.find(e => e.posicion === 2)]);
+    this.cruces.push([grupoB.find(e => e.posicion === 1), grupoA.find(e => e.posicion === 2)]);
+  }
+
+  this.clasificados = this.cruces.flat().filter(equipo => equipo);
+  this.partidos = this.clasificados;
+}
+
+isSeleccionado(equipo: string): boolean {
+  return this.clasificados.some(p => p.nombreEquipo === equipo);
+}
+
+isDivDisabled = false;//ESTADO DEL BOTON "LISTO" QUE ESTÁ EN EL COMPONENTE GRUPOS PARA CONFIRMAR LOS CLASIFICADOS
 
 }
 

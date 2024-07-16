@@ -8,7 +8,7 @@ import { PopupMenuComponent } from '../popup-menu/popup-menu.component';
   selector: 'app-bracket',
   standalone: true,
   imports: [CommonModule, FormsModule],
-templateUrl: './bracket.component.html',
+  templateUrl: './bracket.component.html',
   styleUrl: './bracket.component.css'
 })
 
@@ -106,5 +106,4 @@ export class BracketComponent {
     // Close the modal manually if necessary
     (document.querySelector('#exampleModal') as any)?.modal('hide');
   }
-
 }

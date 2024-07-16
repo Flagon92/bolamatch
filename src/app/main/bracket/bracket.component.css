@@ -83,3 +83,10 @@ h2.winner {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+.no-registred{
+  text-align: center;
+  color: rgba(123, 121, 119, 0.836);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3rem;
+}

@@ -36,25 +36,29 @@
     </h2>
     <ol>
       <li *ngFor="let i of getDuelIndexes(partidos.length); let duelIndex = index">
-        <fieldset>
-          <div class="item p-1">
-            <label>{{ partidos[i]?.nombreEquipo }}</label>
-          </div>
-          <hr>
-          <hr>
-          <div class="item p-1">
-            <label>{{ partidos[i + 1]?.nombreEquipo }}</label>
-            <div>
-              <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
-              (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">➤</button>
+        <div class="container">
+          <div class="row">
+            <div class="col-8">
+              <div class="item p-1">
+                <label>{{ partidos[i]?.nombreEquipo }}</label>
+              </div>
+              <hr>
+              <hr>
+              <div class="item p-1">
+                <label>{{ partidos[i + 1]?.nombreEquipo }}</label>  
+              </div>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-warning btn-duelo" [disabled]="duelosDecididosRonda1[duelIndex]"
+                (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">➤</button>
             </div>
           </div>
-        </fieldset>
+      </div>
       </li>
     </ol>
   </section>
 
-
+  <!--  Brackets  -->
   <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
     <div *ngIf="partidos.length === 16" >
 
@@ -63,19 +67,19 @@
       <app-bracket-visual></app-bracket-visual>
       <app-bracket-visual></app-bracket-visual>
 
-    </div><div *ngIf="partidos.length === 8" >
+    </div>
+    <div class="bracket2"  *ngIf="partidos.length === 8" >
       
       <app-bracket-visual></app-bracket-visual>
       <app-bracket-visual></app-bracket-visual>
 
     </div>
-    <div *ngIf="partidos.length === 4" >
+    <div class="bracket2"  *ngIf="partidos.length === 4" >
 
       <app-bracket-visual></app-bracket-visual>
       
     </div>
   </section>
-
 
 
   <section *ngIf="ganadoresRonda1.length > 0" aria-labelledby="round-2">
@@ -90,25 +94,29 @@
     </h2>
     <ol>
       <li *ngFor="let i of getDuelIndexes(ganadoresRonda1.length); let duelIndex = index">
-        <fieldset>
-          <div class="item p-1">
-            <label>{{ ganadoresRonda1[i]?.nombreEquipo }}</label>
-          </div>
-          <hr>
-          <hr>
-          <div class="item p-1">
-            <label>{{ ganadoresRonda1[i + 1]?.nombreEquipo }}</label>
-            <div>
-              <button class="btn btn-warning" [disabled]="duelosDecididosRonda2[duelIndex]"
+        <div class="container">
+          <div class="row">
+            <div class="col-8">
+              <div class="item p-1">
+                <label>{{ ganadoresRonda1[i]?.nombreEquipo }}</label>
+              </div>
+              <hr>
+              <hr>
+              <div class="item p-1">
+                <label>{{ ganadoresRonda1[i + 1]?.nombreEquipo }}</label>
+              </div>
+            </div>
+            <div class="col-1">
+              <button class="btn btn-warning btn-duelo" [disabled]="duelosDecididosRonda2[duelIndex]"
               (click)="openModal(ganadoresRonda1[i], ganadoresRonda1[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal2">➤</button>
             </div>
           </div>
-        </fieldset>
+        </div>
       </li>
     </ol>
   </section>
-  
 
+  <!--  Brackets  -->
   <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
     <div *ngIf="partidos.length === 16" >
       
@@ -128,7 +136,6 @@
       </div>
     </div>
   </section>
-
 
 
   <section aria-labelledby="round-3" *ngIf="ganadoresRonda2.length > 0">
@@ -152,28 +159,30 @@
       <!-- Si hay más de un ganador en la ronda 2 -->
       <ng-container *ngIf="ganadoresRonda2.length > 1">
         <li *ngFor="let i of getDuelIndexes(ganadoresRonda2.length); let duelIndex = index">
-          <fieldset>
-            <div class="item p-1">
-              <label>{{ ganadoresRonda2[i]?.nombreEquipo }}</label>
-            </div>
-            <hr>
-            <hr>
-            <div class="item p-1">
-              <label>{{ ganadoresRonda2[i + 1]?.nombreEquipo }}</label>
-              <div>
-                <button class="btn btn-warning" [disabled]="duelosDecididosRonda3[duelIndex]"
+          <div class="container">
+            <div class="row">
+              <div class="col-8">
+                <div class="item p-1">
+                  <label>{{ ganadoresRonda2[i]?.nombreEquipo }}</label>
+                </div>
+                <hr>
+                <hr>
+                <div class="item p-1">
+                  <label>{{ ganadoresRonda2[i + 1]?.nombreEquipo }}</label>
+                </div>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-warning btn-duelo" [disabled]="duelosDecididosRonda3[duelIndex]"
                 (click)="openModal(ganadoresRonda2[i], ganadoresRonda2[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal3">➤</button>
               </div>
             </div>
-          </fieldset>
+          </div>
         </li>
       </ng-container>
     </ol>
   </section>
 
- 
-
-
+  <!--  Brackets  -->
   <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
     <div *ngIf="partidos.length === 16" >
 
@@ -187,8 +196,6 @@
       </div>
     </div>
   </section>
-
-
 
 
   <section aria-labelledby="round-4" *ngIf="ganadoresRonda3.length > 0 && ganadoresRonda2.length > 1">
@@ -209,25 +216,30 @@
       <!-- Si hay más de un ganador en la ronda 3 -->
       <ng-container *ngIf="ganadoresRonda3.length > 1">
         <li *ngFor="let i of getDuelIndexes(ganadoresRonda3.length); let duelIndex = index">
-          <fieldset>
-            <div class="item p-1">
-              <label>{{ ganadoresRonda3[i]?.nombreEquipo }}</label>
-            </div>
-            <hr>
-            <hr>
-            <div class="item p-1">
-              <label>{{ ganadoresRonda3[i + 1]?.nombreEquipo }}</label>
-              <div>
+          <div class="container">
+            <div class="row">
+              <div class="col-8">
+                <div class="item p-1">
+                  <label>{{ ganadoresRonda3[i]?.nombreEquipo }}</label>
+                </div>
+                <hr>
+                <hr>
+                <div class="item p-1">
+                  <label>{{ ganadoresRonda3[i + 1]?.nombreEquipo }}</label>
+                </div>
+              </div>
+              <div class="col-1">
                 <button class="btn btn-warning" [disabled]="duelosDecididosRonda4[duelIndex]"
                 (click)="openModal(ganadoresRonda3[i], ganadoresRonda3[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal4">➤</button>
               </div>
             </div>
-          </fieldset>
+          </div>
         </li>
       </ng-container>
     </ol>
   </section>
 
+  <!--  Brackets  -->
   <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
     <div *ngIf="partidos.length === 16" >
       <div class="cuadro">
@@ -251,7 +263,7 @@
     </ol>
   </section>
 
-
+</div>
 <!-- Modal Ronda 1 -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

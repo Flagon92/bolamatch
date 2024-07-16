@@ -14,14 +14,17 @@ export class EquiposComponent {
   constructor(public sharedService: SharedService){}
 
   cargarEquiposDefaultUno(): void {
+    this.sharedService.setDisableRegistro(true);
     this.sharedService.participantes = [...this.sharedService.equiposDefaultUno];
   }
 
   cargarEquiposDefaultDos(): void {
+    this.sharedService.setDisableRegistro(true);
     this.sharedService.participantes = [...this.sharedService.equiposDefaultDos];
   }
 
   cargarEquiposDefaultTres(): void {
+    this.sharedService.setDisableRegistro(true);
     this.sharedService.participantes = [...this.sharedService.equiposDefaultTres];
   }
 

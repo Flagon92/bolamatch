@@ -1,3 +1,20 @@
+<div *ngIf="mostrarInstrucciones" class="overlay">
+  <div class="popup">
+    <h2>RECUERDA</h2>
+    <a class="close" (click)="cerrarPopup()">&times;</a>
+    <div class="content">
+      <p>Sigue estos pasos para utilizar bien la página:</p>
+      <ul>
+        <li>Registrar los equipos.</li>
+        <li>Si registras 32 equipos, primero revisa la fase de grupos.</li>
+        <li>Si registras 16 equipos, elegir el ganador de cada duelo por orden en el Bracket.</li>
+        <li>Confirma los clasificados y avanza a la siguiente fase.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 <div id="formulario">
   <br>
 <form class="container was-validated" id="registro" novalidate #formContact="ngForm">

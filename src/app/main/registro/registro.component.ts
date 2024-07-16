@@ -14,4 +14,10 @@ export class RegistroComponent {
 
   constructor(public sharedService: SharedService){}
   
+
+  mostrarInstrucciones = true;
+
+  cerrarPopup() {
+    this.mostrarInstrucciones = false;  // Oculta el pop-up al cerrar
+  }
  }

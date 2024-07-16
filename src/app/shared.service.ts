@@ -618,7 +618,7 @@ export class SharedService {
   
   isDivDisabled = false;//ESTADO DEL BOTON "LISTO" QUE ESTÁ EN EL COMPONENTE GRUPOS PARA CONFIRMAR LOS CLASIFICADOS
   
-  //Para mostrar la advertencia-------
+  //Para mostrar la advertencia en grupos-------
   showModal() {
     const modal = document.getElementById('warningModal');
     if (modal) {

@@ -38,3 +38,13 @@
   <h2 class="no-registred pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length >= 32">DEBEN ESTAR REGISTRADOS 32
     PARTICIPANTES PARA MOSTRAR UNA FASE DE GRUPOS</h2>
 </div>
+
+<!-- Modal -->
+<div id="warningModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Advertencia</h2>
+    <p>Solo puedes seleccionar hasta dos equipos por grupo.</p>
+    <button class="close-btn" (click)="sharedService.closeModal()">Cerrar</button>
+  </div>
+</div>

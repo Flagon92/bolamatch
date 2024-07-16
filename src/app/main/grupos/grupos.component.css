@@ -55,3 +55,67 @@
     height: 100%;
     /* Ajusta según sea necesario */
 }
+
+
+/* pop up en grupos ---------------------------- */
+
+/* El modal (fondo) */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijado en la ventana del navegador */
+    z-index: 1; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Activar scroll si es necesario */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo con opacidad */
+  }
+  
+  /* Contenido del modal */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% desde la parte superior y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del 80% */
+    max-width: 500px; /* Máximo ancho de 500px */
+    text-align: center;
+  }
+  
+  /* Botón de cerrar */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Estilo del encabezado */
+  .modal-content h2 {
+    color: red;
+  }
+  
+  /* Estilo del botón de cerrar */
+  button.close-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  button.close-btn:hover {
+    background-color: darkred;
+  }
+  

@@ -28,4 +28,5 @@
   <div>
     <h2 class="no-registred pt-5 pb-5 mt-5" [hidden]="sharedService.participantes.length > 0">AÚN NO HAY EQUIPOS REGISTRADOS</h2>
   </div>
+  <button class="btn btn-primary" (click)="disableRegistro()" *ngIf="!sharedService.buttonClicked">Finalizar Registro</button>
 </div>

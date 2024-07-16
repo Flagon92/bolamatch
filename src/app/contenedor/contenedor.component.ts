@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../components/footer/footer.component';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-contenedor',
@@ -10,6 +11,9 @@ import { FooterComponent } from '../components/footer/footer.component';
   styleUrl: './contenedor.component.css'
 })
 export class ContenedorComponent {
+
+  constructor(private sharedService: SharedService) {}
+
   private images: string[] = [
     '../../assets/maradona.png',
     '../../assets/cubillas.png',
@@ -21,6 +25,10 @@ export class ContenedorComponent {
 
   ngOnInit(): void {
     this.startImageSlider();
+
+    this.sharedService.disableRegistro$.subscribe(value => {
+      this.disableRegistro = value;
+    });
   }
 
   ngOnDestroy(): void {
@@ -42,4 +50,9 @@ export class ContenedorComponent {
       clearInterval(this.intervalId);
     }
   }
+
+  disableRegistro: boolean = false;
+
+  
+
 }

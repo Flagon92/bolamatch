@@ -1,5 +1,5 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 
 
@@ -658,6 +658,17 @@ export class SharedService {
     this.cruces = [];
     this.participantes = [];
 }
+
+// Boton para deshabilitar Registro
+
+private disableRegistro = new BehaviorSubject<boolean>(false);
+  disableRegistro$ = this.disableRegistro.asObservable();
+
+  buttonClicked: boolean = false;
+
+  setDisableRegistro(value: boolean) {
+    this.disableRegistro.next(value);
+  }
 
 }
 

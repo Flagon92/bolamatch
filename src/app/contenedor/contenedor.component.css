@@ -35,5 +35,7 @@ h1 {
     max-height: none;
   }
   
-
-  
+  .list-group-item.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }

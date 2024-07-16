@@ -25,4 +25,9 @@ export class EquiposComponent {
     this.sharedService.participantes = [...this.sharedService.equiposDefaultTres];
   }
 
+  disableRegistro() {
+    this.sharedService.setDisableRegistro(true);
+    this.sharedService.buttonClicked = true; 
+  }
+
 }

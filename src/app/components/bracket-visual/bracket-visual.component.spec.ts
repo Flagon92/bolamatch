@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupMenuComponent } from './popup-menu.component';
+import { BracketVisualComponent } from './bracket-visual.component';
 
-describe('PopupMenuComponent', () => {
-  let component: PopupMenuComponent;
-  let fixture: ComponentFixture<PopupMenuComponent>;
+describe('BracketVisualComponent', () => {
+  let component: BracketVisualComponent;
+  let fixture: ComponentFixture<BracketVisualComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PopupMenuComponent]
+      imports: [BracketVisualComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PopupMenuComponent);
+    fixture = TestBed.createComponent(BracketVisualComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

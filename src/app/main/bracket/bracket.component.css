@@ -3,25 +3,26 @@
 
 .bracket {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px; 
   overflow: visible;
   width: 100%;
-  margin: 50px auto;
-  max-width: 1200px; 
+  margin: 0;
+}
+
+button{
+  margin-left: 10px;
 }
 
 section {
-  max-width: 250px; 
-  padding: 10px;
+  max-width: 200px; 
   width: 25%; 
+  max-height: 950px;
+  margin: 0;
 }
 
 ol {
   display: flex;
   flex-wrap: wrap; 
-  list-style-type: none;
   margin: 0;
   padding: 0;
 }
@@ -29,10 +30,9 @@ ol {
 li {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
+  padding: 5px;
   align-items: center; 
-  margin-bottom: 15px; 
-  position: relative;
-  width: 100%;
 }
 
 .item {
@@ -41,13 +41,8 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  width: 100%; 
+  width: 200px; 
   max-width: 90%; 
-}
-
-button {
-  margin-left: 10px;
 }
 
 a {
@@ -64,7 +59,7 @@ hr {
   margin: 0;
   color: #fff;
   background-color: #fff; 
-  height: 1px; 
+  height: 1px;
   border: none; 
 }
 
@@ -89,4 +84,45 @@ h2.winner {
   color: rgba(123, 121, 119, 0.836);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 3rem;
+}
+
+.no-registred{
+  text-align: center;
+  color: rgba(123, 121, 119, 0.836);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3rem;
+}
+
+img{
+  width: 160px;
+  margin: 10px;
+  padding: 35px;
+  border-radius: 10%;
+  border: 1px solid #dcdcdc;
+}
+
+.btn-modal{
+  padding: 5px;
+  width: 160px;
+}
+
+.cuadro{
+  position: relative;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 75px;
+}
+
+.bracket1{
+  position: relative;
+  height: 100px;
+  width: max-content;
+}
+
+.bracket-top2{
+  position: absolute; 
+  bottom: 50%;
+  background-color: var(--color-bracket);
+  height: 5px;
+  width: 100%;
 }

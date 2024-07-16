@@ -1,6 +1,5 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { PopupMenuComponent } from './main/popup-menu/popup-menu.component';
 
 
 
@@ -167,33 +166,176 @@ export class SharedService {
   //ARRAYS POR DEFAULT PARA NO ESTAR ESCRIBIENDO A CADA RATO----------------------------------
 
   equiposDefaultUno = [
-    { nombreEquipo: 'A', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'B', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'C', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'D', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'E', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'F', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'G', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'H', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'I', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'J', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'K', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'L', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'M', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'N', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'Ñ', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'O', procedencia: '000', representante: '000', email: '000', telefono: '000' }
+      {
+        "nombreEquipo": "River Plate",
+        "procedencia": "Buenos Aires, Argentina",
+        "representante": "Marcelo Gallardo",
+        "email": "mgallardo@riverplate.com",
+        "telefono": "+54 11 1234 5678"
+      },
+      {
+        "nombreEquipo": "Juniors",
+        "procedencia": "Buenos Aires, Argentina",
+        "representante": "Juan Román Riquelme",
+        "email": "jriquelme@bocajuniors.com",
+        "telefono": "+54 11 2345 6789"
+      },
+      {
+        "nombreEquipo": "Barcelona",
+        "procedencia": "Barcelona, España",
+        "representante": "Xavi Hernández",
+        "email": "xavi@fcbarcelona.com",
+        "telefono": "+34 93 123 4567"
+      },
+      {
+        "nombreEquipo": "Real Madrid",
+        "procedencia": "Madrid, España",
+        "representante": "Carlo Ancelotti",
+        "email": "ancelotti@realmadrid.com",
+        "telefono": "+34 91 234 5678"
+      },
+      {
+        "nombreEquipo": "Manchester United",
+        "procedencia": "Manchester, Inglaterra",
+        "representante": "Erik ten Hag",
+        "email": "tenhag@manutd.com",
+        "telefono": "+44 161 876 5432"
+      },
+      {
+        "nombreEquipo": "Liverpool",
+        "procedencia": "Liverpool, Inglaterra",
+        "representante": "Jürgen Klopp",
+        "email": "klopp@liverpoolfc.com",
+        "telefono": "+44 151 123 4567"
+      },
+      {
+        "nombreEquipo": "Paris Saint-Germain",
+        "procedencia": "París, Francia",
+        "representante": "Luis Enrique",
+        "email": "enrique@psg.fr",
+        "telefono": "+33 1 1234 5678"
+      },
+      {
+        "nombreEquipo": "Bayern Munich",
+        "procedencia": "Múnich, Alemania",
+        "representante": "Julian Nagelsmann",
+        "email": "nagelsmann@fcbayern.com",
+        "telefono": "+49 89 1234 5678"
+      },
+      {
+        "nombreEquipo": "Juventus",
+        "procedencia": "Turín, Italia",
+        "representante": "Massimiliano Allegri",
+        "email": "allegri@juventus.com",
+        "telefono": "+39 011 1234 5678"
+      },
+      {
+        "nombreEquipo": "Inter Milán",
+        "procedencia": "Milán, Italia",
+        "representante": "Simone Inzaghi",
+        "email": "inzaghi@inter.it",
+        "telefono": "+39 02 1234 5678"
+      },
+      {
+        "nombreEquipo": "Atlético Madrid",
+        "procedencia": "Madrid, España",
+        "representante": "Diego Simeone",
+        "email": "simeone@atleticodemadrid.com",
+        "telefono": "+34 91 123 4567"
+      },
+      {
+        "nombreEquipo": "AC Milan",
+        "procedencia": "Milán, Italia",
+        "representante": "Stefano Pioli",
+        "email": "pioli@acmilan.com",
+        "telefono": "+39 02 3456 7890"
+      },
+      {
+        "nombreEquipo": "Borussia Dortmund",
+        "procedencia": "Dortmund, Alemania",
+        "representante": "Edin Terzic",
+        "email": "terzic@bvb.de",
+        "telefono": "+49 231 1234 5678"
+      },
+      {
+        "nombreEquipo": "Chelsea FC",
+        "procedencia": "Londres, Inglaterra",
+        "representante": "Mauricio Pochettino",
+        "email": "pochettino@chelseafc.com",
+        "telefono": "+44 20 1234 5678"
+      },
+      {
+        "nombreEquipo": "Manchester City",
+        "procedencia": "Manchester, Inglaterra",
+        "representante": "Pep Guardiola",
+        "email": "guardiola@mancity.com",
+        "telefono": "+44 161 234 5678"
+      },
+      {
+        "nombreEquipo": "Tottenham Hotspur",
+        "procedencia": "Londres, Inglaterra",
+        "representante": "Ange Postecoglou",
+        "email": "postecoglou@tottenhamhotspur.com",
+        "telefono": "+44 20 8765 4321"
+      }    
   ];
 
-  equiposDefaultDos = [
-    { nombreEquipo: 'A', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'B', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'C', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'D', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'E', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'F', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'G', procedencia: '000', representante: '000', email: '000', telefono: '000' },
-    { nombreEquipo: 'H', procedencia: '000', representante: '000', email: '000', telefono: '000' }
+  equiposDefaultDos = [{
+    "nombreEquipo": "River Plate",
+    "procedencia": "Buenos Aires, Argentina",
+    "representante": "Marcelo Gallardo",
+    "email": "mgallardo@riverplate.com",
+    "telefono": "+54 11 1234 5678"
+  },
+  {
+    "nombreEquipo": "Juniors",
+    "procedencia": "Buenos Aires, Argentina",
+    "representante": "Juan Román Riquelme",
+    "email": "jriquelme@bocajuniors.com",
+    "telefono": "+54 11 2345 6789"
+  },
+  {
+    "nombreEquipo": "Barcelona",
+    "procedencia": "Barcelona, España",
+    "representante": "Xavi Hernández",
+    "email": "xavi@fcbarcelona.com",
+    "telefono": "+34 93 123 4567"
+  },
+  {
+    "nombreEquipo": "Real Madrid",
+    "procedencia": "Madrid, España",
+    "representante": "Carlo Ancelotti",
+    "email": "ancelotti@realmadrid.com",
+    "telefono": "+34 91 234 5678"
+  },
+  {
+    "nombreEquipo": "Manchester United",
+    "procedencia": "Manchester, Inglaterra",
+    "representante": "Erik ten Hag",
+    "email": "tenhag@manutd.com",
+    "telefono": "+44 161 876 5432"
+  },
+  {
+    "nombreEquipo": "Liverpool",
+    "procedencia": "Liverpool, Inglaterra",
+    "representante": "Jürgen Klopp",
+    "email": "klopp@liverpoolfc.com",
+    "telefono": "+44 151 123 4567"
+  },
+  {
+    "nombreEquipo": "Paris Saint-Germain",
+    "procedencia": "París, Francia",
+    "representante": "Luis Enrique",
+    "email": "enrique@psg.fr",
+    "telefono": "+33 1 1234 5678"
+  },
+  {
+    "nombreEquipo": "Bayern Munich",
+    "procedencia": "Múnich, Alemania",
+    "representante": "Julian Nagelsmann",
+    "email": "nagelsmann@fcbayern.com",
+    "telefono": "+49 89 1234 5678"
+  }
   ];
 
   equiposDefaultTres = [
@@ -239,7 +381,7 @@ export class SharedService {
     procedencia: string,
     representante: string,
     email: string,
-    telefono: string
+    telefono: string,
   }[] = [];
 
   
@@ -373,19 +515,7 @@ export class SharedService {
     }
   }
 
-  i: any; 
-
-  private menu: PopupMenuComponent | null = null;
-
-  setMenu(menu: PopupMenuComponent) {
-    this.menu = menu;
-  }
-
-  openMenu(event: MouseEvent) {
-    if (this.menu) {
-      this.menu.open(event);
-    }
-  }
+  
 
   //COSITAS PARA LA FASE DE GRUPOS========================================================================
   

@@ -36,26 +36,47 @@
     </h2>
     <ol>
       <li *ngFor="let i of getDuelIndexes(partidos.length); let duelIndex = index">
-        <div class="item p-1">
-          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">{{ partidos[i]?.nombreEquipo }}</a>
-          <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
-            (click)="agregarGanadorRonda1(i, duelIndex)">Ganador</button>
-        </div>
-        <hr>
-        <hr>
-        <div class="item p-1">
-          <a href="#" (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">{{ partidos[i + 1]?.nombreEquipo }}</a>
-          <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
-            (click)="agregarGanadorRonda1(i + 1, duelIndex)">Ganador</button>
-        </div>
+        <fieldset>
+          <div class="item p-1">
+            <label>{{ partidos[i]?.nombreEquipo }}</label>
+          </div>
+          <hr>
+          <hr>
+          <div class="item p-1">
+            <label>{{ partidos[i + 1]?.nombreEquipo }}</label>
+            <div>
+              <button class="btn btn-warning" [disabled]="duelosDecididosRonda1[duelIndex]"
+              (click)="openModal(partidos[i], partidos[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal">➤</button>
+            </div>
+          </div>
+        </fieldset>
       </li>
     </ol>
   </section>
 
 
-  -------
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+
+    </div><div *ngIf="partidos.length === 8" >
+      
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+
+    </div>
+    <div *ngIf="partidos.length === 4" >
+
+      <app-bracket-visual></app-bracket-visual>
+      
+    </div>
+  </section>
+
+
 
   <section *ngIf="ganadoresRonda1.length > 0" aria-labelledby="round-2">
     <h2 *ngIf="ganadoresRonda1.length === 8">
@@ -69,24 +90,46 @@
     </h2>
     <ol>
       <li *ngFor="let i of getDuelIndexes(ganadoresRonda1.length); let duelIndex = index">
-        <div class="item p-1">
-          <a href="#">{{ ganadoresRonda1[i]?.nombreEquipo }}</a>
-          <button class="btn btn-warning" [disabled]="duelosDecididosRonda2[duelIndex]"
-            (click)="agregarGanadorRonda2(i, duelIndex)">Ganador</button>
-        </div>
-        <hr>
-        <hr>
-        <div class="item p-1">
-          <a href="#">{{ ganadoresRonda1[i + 1]?.nombreEquipo }}</a>
-          <button class="btn btn-warning" [disabled]="duelosDecididosRonda2[duelIndex]"
-            (click)="agregarGanadorRonda2(i + 1, duelIndex)">Ganador</button>
-        </div>
+        <fieldset>
+          <div class="item p-1">
+            <label>{{ ganadoresRonda1[i]?.nombreEquipo }}</label>
+          </div>
+          <hr>
+          <hr>
+          <div class="item p-1">
+            <label>{{ ganadoresRonda1[i + 1]?.nombreEquipo }}</label>
+            <div>
+              <button class="btn btn-warning" [disabled]="duelosDecididosRonda2[duelIndex]"
+              (click)="openModal(ganadoresRonda1[i], ganadoresRonda1[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal2">➤</button>
+            </div>
+          </div>
+        </fieldset>
       </li>
     </ol>
   </section>
+  
+
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+      
+      <app-bracket-visual></app-bracket-visual>
+      <app-bracket-visual></app-bracket-visual>
+
+    </div>
+    <div *ngIf="partidos.length === 8" >
+
+      <app-bracket-visual></app-bracket-visual>
+
+    </div>
+    <div *ngIf="partidos.length === 4" >
+      <div class="cuadro">
+        <div class="bracket1"></div>
+        <div class="bracket-top2"></div>
+      </div>
+    </div>
+  </section>
 
 
-  --------
 
   <section aria-labelledby="round-3" *ngIf="ganadoresRonda2.length > 0">
     <h2 *ngIf="ganadoresRonda2.length === 4">
@@ -102,31 +145,51 @@
       <!-- Si solo hay un ganador en la ronda 2 -->
       <li *ngIf="ganadoresRonda2.length === 1">
         <div class="item p-1">
-          <a href="#">{{ ganadoresRonda2[0]?.nombreEquipo }}</a>
+          {{ ganadoresRonda2[0]?.nombreEquipo }}
         </div>
       </li>
 
       <!-- Si hay más de un ganador en la ronda 2 -->
       <ng-container *ngIf="ganadoresRonda2.length > 1">
         <li *ngFor="let i of getDuelIndexes(ganadoresRonda2.length); let duelIndex = index">
-          <div class="item p-1">
-            <a href="#">{{ ganadoresRonda2[i]?.nombreEquipo }}</a>
-            <button class="btn btn-warning" [disabled]="duelosDecididosRonda3[duelIndex]"
-              (click)="agregarGanadorRonda3(i, duelIndex)">Ganador</button>
-          </div>
-          <hr>
-          <hr>
-          <div class="item p-1" *ngIf="i + 1 < ganadoresRonda2.length">
-            <a href="#">{{ ganadoresRonda2[i + 1]?.nombreEquipo }}</a>
-            <button class="btn btn-warning" [disabled]="duelosDecididosRonda3[duelIndex]"
-              (click)="agregarGanadorRonda3(i + 1, duelIndex)">Ganador</button>
-          </div>
+          <fieldset>
+            <div class="item p-1">
+              <label>{{ ganadoresRonda2[i]?.nombreEquipo }}</label>
+            </div>
+            <hr>
+            <hr>
+            <div class="item p-1">
+              <label>{{ ganadoresRonda2[i + 1]?.nombreEquipo }}</label>
+              <div>
+                <button class="btn btn-warning" [disabled]="duelosDecididosRonda3[duelIndex]"
+                (click)="openModal(ganadoresRonda2[i], ganadoresRonda2[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal3">➤</button>
+              </div>
+            </div>
+          </fieldset>
         </li>
       </ng-container>
     </ol>
   </section>
 
-  -------
+ 
+
+
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+
+      <app-bracket-visual></app-bracket-visual>
+      
+    </div>
+    <div *ngIf="partidos.length === 8" >
+      <div class="cuadro">
+        <div class="bracket1"></div>
+        <div class="bracket-top2"></div>
+      </div>
+    </div>
+  </section>
+
+
+
 
   <section aria-labelledby="round-4" *ngIf="ganadoresRonda3.length > 0 && ganadoresRonda2.length > 1">
     <h2 *ngIf="ganadoresRonda3.length === 1" class="winner">
@@ -139,31 +202,40 @@
       <!-- Si solo hay un ganador en la ronda 3 -->
       <li *ngIf="ganadoresRonda3.length === 1">
         <div class="item p-1">
-          <a href="#">{{ ganadoresRonda3[0]?.nombreEquipo }}</a>
+          {{ ganadoresRonda3[0]?.nombreEquipo }}
         </div>
       </li>
 
       <!-- Si hay más de un ganador en la ronda 3 -->
       <ng-container *ngIf="ganadoresRonda3.length > 1">
         <li *ngFor="let i of getDuelIndexes(ganadoresRonda3.length); let duelIndex = index">
-          <div class="item p-1">
-            <a href="#">{{ ganadoresRonda3[i]?.nombreEquipo }}</a>
-            <button class="btn btn-warning" [disabled]="duelosDecididosRonda4[duelIndex]"
-              (click)="agregarGanadorRonda4(i, duelIndex)">Ganador</button>
-          </div>
-          <hr>
-          <hr>
-          <div class="item p-1" *ngIf="i + 1 < ganadoresRonda3.length">
-            <a href="#">{{ ganadoresRonda3[i + 1]?.nombreEquipo }}</a>
-            <button class="btn btn-warning" [disabled]="duelosDecididosRonda4[duelIndex]"
-              (click)="agregarGanadorRonda4(i + 1, duelIndex)">Ganador</button>
-          </div>
+          <fieldset>
+            <div class="item p-1">
+              <label>{{ ganadoresRonda3[i]?.nombreEquipo }}</label>
+            </div>
+            <hr>
+            <hr>
+            <div class="item p-1">
+              <label>{{ ganadoresRonda3[i + 1]?.nombreEquipo }}</label>
+              <div>
+                <button class="btn btn-warning" [disabled]="duelosDecididosRonda4[duelIndex]"
+                (click)="openModal(ganadoresRonda3[i], ganadoresRonda3[i + 1], duelIndex)" data-bs-toggle="modal" data-bs-target="#exampleModal4">➤</button>
+              </div>
+            </div>
+          </fieldset>
         </li>
       </ng-container>
     </ol>
   </section>
 
-  -------
+  <section  *ngIf="partidos.length > 2 && participantesNecesarios(partidos.length)">
+    <div *ngIf="partidos.length === 16" >
+      <div class="cuadro">
+        <div class="bracket1"></div>
+        <div class="bracket-top2"></div>
+      </div>
+    </div>
+  </section>
 
   <section aria-labelledby="winner" *ngIf="ganadoresRonda4.length > 0 && ganadoresRonda3.length > 1">
     <h2 *ngIf="ganadoresRonda4.length === 1" class="winner">
@@ -173,40 +245,137 @@
       <!-- Si solo hay un ganador en la ronda 4 -->
       <li *ngIf="ganadoresRonda4.length === 1">
         <div class="item p-1">
-          <a href="#">{{ ganadoresRonda4[0]?.nombreEquipo }}</a>
+          {{ ganadoresRonda4[0]?.nombreEquipo }}
         </div>
       </li>
     </ol>
   </section>
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar Resultado</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col">{{ currentAdversary1?.nombreEquipo }}</div>
-            <button class="btn btn-warning" (click)="selectWinner(currentAdversary1, currentDuelIndex)">Ganador</button>
+<!-- Modal Ronda 1 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Partidos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Elige el Ganador</h2>
+        <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner1(partidos.indexOf(currentAdversary1), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary1?.nombreEquipo }}
+            </button> 
+          </div>         
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner1(partidos.indexOf(currentAdversary2), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary2?.nombreEquipo }}
+            </button>
           </div>
-          <hr>
-          <div class="row">
-            <div class="col">{{ currentAdversary2?.nombreEquipo }}</div>
-            <button class="btn btn-warning" (click)="selectWinner(currentAdversary2, currentDuelIndex)">Ganador</button>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
+    </div>
   </div>
+</div>
+
+<!-- Modal Ronda 2 -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Partidos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Elige el Ganador</h2>
+        <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner2(ganadoresRonda1.indexOf(currentAdversary1), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary1?.nombreEquipo }}
+            </button> 
+          </div>         
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner2(ganadoresRonda1.indexOf(currentAdversary2), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary2?.nombreEquipo }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ronda 3 -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Partidos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Elige el Ganador</h2>
+        <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner3(ganadoresRonda2.indexOf(currentAdversary1), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary1?.nombreEquipo }}
+            </button> 
+          </div>         
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner3(ganadoresRonda2.indexOf(currentAdversary2), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary2?.nombreEquipo }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ronda 4 -->
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Partidos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Elige el Ganador</h2>
+        <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner4(ganadoresRonda3.indexOf(currentAdversary1), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary1?.nombreEquipo }}
+            </button> 
+          </div>         
+          <div class="col">
+            <img src="../../../assets/icon.png" alt=""><br>
+            <button (click)="selectWinner4(ganadoresRonda3.indexOf(currentAdversary2), currentDuelIndex)" class="btn btn-warning btn-modal" data-bs-dismiss="modal">
+              {{ currentAdversary2?.nombreEquipo }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

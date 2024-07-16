@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from '../../shared.service';
-import { PopupMenuComponent } from '../popup-menu/popup-menu.component';
+import { BracketVisualComponent } from "../../components/bracket-visual/bracket-visual.component";
 
 @Component({
   selector: 'app-bracket',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './bracket.component.html',
+  imports: [CommonModule, FormsModule, BracketVisualComponent],
+templateUrl: './bracket.component.html',
   styleUrl: './bracket.component.css'
 })
 
@@ -22,15 +22,10 @@ export class BracketComponent {
 
   sortearDeshabilitado: boolean = true;
 
+  
+
   ngOnInit() {
     this.sharedService.inicializarDuelos();
-
-  }
-
-  barajar(): void {
-    this.sharedService.barajar();
-
-    this.sortearDeshabilitado = false;
   }
 
   get partidos() {
@@ -97,13 +92,44 @@ export class BracketComponent {
     this.currentAdversary1 = adversary1;
     this.currentAdversary2 = adversary2;
     this.currentDuelIndex = duelIndex;
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+      (modalElement as any).modal('show');
+    }
   }
 
-  selectWinner(winner: any, duelIndex: number): void {
+
+  selectWinner1(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
     if (this.currentDuelIndex === duelIndex) {
-      this.sharedService.agregarGanadorRonda1(winner, duelIndex); // Adjust this method based on the current round
+        this.sharedService.agregarGanadorRonda1(index, duelIndex);
+    }
+    // Cerrar el modal.
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+        (modalElement as any).modal('hide');
+    }
+  }
+
+  selectWinner2(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
+    if (this.currentDuelIndex === duelIndex) {
+        this.sharedService.agregarGanadorRonda2(index, duelIndex);
+    }
+    // Close the modal manually if necessary
+    const modalElement = document.querySelector('#exampleModal');
+    if (modalElement) {
+        (modalElement as any).modal('hide');
+    }
+  }
+
+  selectWinner3(index: number, duelIndex: number): void {
+    console.log(`Winner index: ${index}, Duel index: ${duelIndex}`);
+    if (this.currentDuelIndex === duelIndex) {
+        this.sharedService.agregarGanadorRonda3(index, duelIndex);
     }
     // Close the modal manually if necessary
     (document.querySelector('#exampleModal') as any)?.modal('hide');
   }
+
 }

@@ -1,6 +1,6 @@
 <button class="btn btn-primary"
   [hidden]="sharedService.participantes.length >= 32 || sharedService.participantes.length == 0"
-  *ngIf="sharedService.sortearDeshabilitado" (click)="barajar()">BARAJAR EQUIPOS</button>
+  *ngIf="sharedService.sortearDeshabilitado" (click)="sharedService.barajar()">BARAJAR EQUIPOS</button>
 <!-- Nuevo botón para copiar cruces a clasificados -->
 <button class="btn btn-primary"
   [hidden]="sharedService.participantes.length <= 16 || sharedService.participantes.length == 0" [disabled]="sharedService.clasificados.length != 16"
@@ -350,7 +350,7 @@
 </div>
 
 <!-- Modal Ronda 4 -->
-<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -378,4 +378,4 @@
     </div>
     </div>
   </div>
-</div>
+</div> -->
